@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Fetch!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link rel="icon" sizes="192x192" href="../images/bone.png"/>
+        <link rel="apple-touch-icon" href="../images/bone.png"/>
+        <link rel="shortcut icon" href="../images/bone.png" type="image/x-icon"/>
+
+        <link rel="stylesheet" type="text/css" href="../normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="../fetch.css"/>
+    </head>
+  <body>
+    <div id="map_div" class="map"></div>
+    <div id="show_user"></div>
+    
+    <!-- This is mandatory for the map!  -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo">
+    </script>
+    <script src="../classes/map.js"></script>
+    
+    <script type="text/javascript">
+        var cb_function = function(id) {
+            document.getElementById("show_user").innerHTML = id;
+        };
+        // The cb_function is the function, that is called when a user_icon is clicked. It takes one argument.
+        // In the call, the Argument is the id of the icon.
+        // The idea is to make a callback function, that displays a user by id.
+        var map = new Map('map_div', cb_function);
+        
+        //Get the current Position
+        navigator.geolocation.getCurrentPosition(function (position) {     
+            //generate a position that is close to the current position
+            //(Reminder: Longitude is left / rigt)
+            var position1 = new google.maps.LatLng(position.coords.latitude, position.coords.longitude + 0.005);
+            // add a User marker with the generated Position
+            map.addMarker(position1, "FH", 100);
+            
+            
+        }, function () {
+            handleLocationError(true, infoWindow, this.googleMap.getCenter());
+        });
+        
+        
+    </script>
+    
+  </body>
+</html>

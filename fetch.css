@@ -1,0 +1,116 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 16, 2017, 4:29:38 PM
+    Author     : Bofrostmann
+*/
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    height: 9%;
+    background-color: lightblue;
+}
+
+main {
+    height: 81%;
+    background-color: skyblue;
+}
+
+footer {
+    height: 9%;
+    background-color: lightblue;
+}
+
+.map {
+    height: 100%;
+}
+
+#map_div {
+    height: 80%;
+/*    margin-bottom: 1%;
+    margin-top: 1%;*/
+}
+
+
+#toggle_walk_button {
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin-left: 10%;
+    margin-top: 1%;
+}
+
+.info_div {
+    width: 100%;
+    height: 10%;
+}
+
+#show_user {
+    height: 20%;
+    width: 100%;
+    background-color: green;
+}
+
+
+.select_role {
+    display: block;
+    height: 50%;
+    font-size: xx-large;
+}
+
+.design_button {
+    text-align: center;
+    color: #fff;
+    text-shadow: -2px 2px #306090;
+    background-color: #ff9664;
+    background-image: linear-gradient(top, #80b0e0, #306090);
+    /*ensure browser support, chrome needs it, so to make sure, we do moz etc. as well*/
+    background-image: -webkit-linear-gradient(top, #80b0e0, #306090);
+    background-image: -moz-linear-gradient(top, #80b0e0, #306090);
+    background-image: -o-linear-gradient(top, #80b0e0, #306090);
+    background-image: -ms-linear-gradient(top, #80b0e0, #306090);
+    box-shadow: inset 0 0 0 1px #305070;
+    border: none;
+    border-radius: 5px;
+}
+
+.design_button:active {
+    box-shadow: inset 0 0 0 1px #305070,inset 0 5px 30px #204050;
+}
+
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: red;    
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hidden * {
+    display: none !important;
+}
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+© 2017-03: Florian Haimerl
+-->
+<html>
+    <head>
+        <title>Fetch!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link rel="icon" sizes="192x192" href="../images/bone.png"/>
+        <link rel="apple-touch-icon" href="../images/bone.png"/>
+        <link rel="shortcut icon" href="../images/bone.png" type="image/x-icon"/>
+        
+        <link rel="stylesheet" type="text/css" href="../normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="../fetch.css"/>
+    </head>
+    <body>
+        <header>
+        </header>
+        
+        <main>
+            <div class="info_div" id="top_info"></div>
+            <div id="map_div" class="map"></div>
+            <div class="info_div" id="bottom_info">
+                <a class="design_button hidden" id="toggle_walk_button"></a>
+            </div>
+        </main>
+        
+        <footer>
+        </footer>
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo&libraries=geometry">
+      </script>
+      <script src="../classes/map.js"></script>
+      <script src="walkCycleModel.js"></script>
+      <script src="walkCycleView.js"></script> 
+      <script src="walkCycleController.js"></script>
+    </body>
+</html>

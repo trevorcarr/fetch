@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--html manifest="manifest.appcache"-->
+<html>
+    <head>
+        <title>Fetch!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link rel="icon" sizes="192x192" href="images/bone.png"/>
+        <link rel="apple-touch-icon" href="images/bone.png"/>
+        <link rel="shortcut icon" href="images/bone.png" type="image/x-icon"/>
+        
+        <link rel="stylesheet" type="text/css" href="normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="fetch.css"/>
+    </head>
+    
+    <body> 
+        <header>
+        </header>
+        <main>
+            <div class="overlay" id="selection_overlay">
+                <!--When doing the settings-pages, feel free to add a classic href 
+                        and remove the onclick in the fetchView.js -->
+                <a class="design_button select_role" id="owner_button" href="ownerProfile.html">I want my Dog to be walked</a>
+                <a class="design_button select_role" id="walker_button" href="walkerProfile.html">I want to walk a dog</a>
+            </div>
+        </main>
+        <footer>
+            <button onclick="window.location.reload(true);">reload and delete cache (dev mode)</button>
+            <a class="design_button" href="tests/mapTest.html">mapTest (dev mode)</a>
+        </footer>
+        <!-- I'm not even sure, we need this... I just added it out of habit  -->
+        <script src="fetchModel.js"></script>
+        <script src="fetchView.js"></script> 
+        <script src="fetchController.js"></script>
+    </body> 
+</html>
