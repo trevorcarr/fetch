@@ -9,7 +9,4 @@
 "use strict";
 
 function FetchView() {
-    
-    
-    
 }
