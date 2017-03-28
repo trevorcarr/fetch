@@ -157,13 +157,12 @@ Map.prototype.getLengthOfPathInM = function () {
 };
 
 Map.prototype.getPathJson = function () {
-    this.path.setMap(null);
-    return JSON.stringify(this.path.getPath());
+    return JSON.stringify(this.path.getPath().getArray());
 };
 
 
 Map.prototype.setPathJson = function (path_string) {
-    this.path = JSON.parse(path_string);
+    this.path.setPath(JSON.parse(path_string));
     this.path.setMap(this.googleMap);
 };
 

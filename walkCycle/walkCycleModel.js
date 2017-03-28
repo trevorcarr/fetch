@@ -88,7 +88,7 @@ function WalkCycleModel() {
                 if (role === 'walker') {
                     map.setPositionUpdateCallback(function () {
                         if (map.getDistanceToTarget() <= max_target_distance) {
-                            window.open('../postWalk/postWalkWalker.html?path=' + map.getPathJson(), '_self');
+                            window.open('../postWalk/postWalkWalker.html?path=' + encodeURIComponent(map.getPathJson()), '_self');
                         }
                         that.onPositionUpdate();
                     });
