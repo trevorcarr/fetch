@@ -8,8 +8,7 @@
       function initMap() {
         var map = new Map('post_map');
         var path = (new Helper().getUrlParameter('path'));
-//        console.log(decodeURI(path));
-        map.setPathJson(decodeURIComponent(path));
+        map.setPathJson(path);
         tripStats(map);
       }
       
@@ -17,8 +16,8 @@
         distance = map.getLengthOfPathInM();
         distance = fixDistance(distance);
         document.getElementById("distance").innerHTML = "Distance: " + distance + " km";
-        document.getElementById("minutes").innerHTML = "Minutes: " ;
-        console.log(distance);
+        var duration = (new Helper().getUrlParameter('time'));
+        document.getElementById("minutes").innerHTML = "Time: " + parseInt(duration).formatTime();
         document.getElementById("price").innerHTML = "Price: " + "£" + (distance*10);
         
         
