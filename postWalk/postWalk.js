@@ -8,10 +8,8 @@
       function initMap() {
         var map = new Map('post_map');
         var path = (new Helper().getUrlParameter('path'));
-        console.log(path);
-        map.setPathJson(path);
-        
+        console.log(decodeURI(path));
+        map.setPathJson(decodeURIComponent(path));
       }
+      
       window.addEventListener("load", initMap);
-      
-      
