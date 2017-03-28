@@ -126,7 +126,8 @@ function WalkCycleModel() {
     
     this.finishWalkIfAtTarget = function (of_enemy) {
         if (map.getDistanceToTarget(of_enemy) <= max_target_distance) {
-            window.open('../postWalk/postWalkWalker.html?path=' + encodeURIComponent(map.getPathJson()), '_self');
+            window.open('../postWalk/postWalkWalker.html?path=' + encodeURIComponent(map.getPathJson()) 
+                    + '&time=' + encodeURIComponent(that.getDuration()), '_self');
         }
     };
 

@@ -15,7 +15,7 @@ Helper.prototype.getUrlParameter = function (name) {
     for (var i = 0; i < argument_strings.length; i++) {
         var argument_split = argument_strings[i].split('=');
         if (argument_split.length > 1 && argument_split[0].replace('#', '') === name) {
-            return argument_split[1].replace('#', '');
+            return decodeURIComponent(argument_split[1].replace('#', ''));
         }
     }
     return '';
