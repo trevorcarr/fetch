@@ -14,10 +14,11 @@ function WalkCycleModel() {
             dog = null, //TODO: just a placeholder
             setModeCallback = null,
             mode = "",
-            max_target_distance = 15, //in metres
+            max_target_distance = 50, //in metres
             time_start_of_walk = null,
             duration_of_walk = null,
             positionUpdateCallback = null,
+            use_drive_to_walk_phase = false,
 //TODO I hat this! There has to be a better solution! :/ 
 //Reason for this: startwalk and stopwalk are onclick, therefore "this" is the button
             that = this;
@@ -35,8 +36,8 @@ function WalkCycleModel() {
             target_name = dog.name;
             target_position = dog.position;
         } else if (role === 'owner') {
-            map.showWalker(pos);
-            target_name = 'owners name';
+            map.showEnemy(pos);
+            target_name = 'OWNERS NAME';
             target_position = my_pos;
         }
         map.addMarker(target_position, target_name, 1, true);
@@ -69,10 +70,18 @@ function WalkCycleModel() {
                         that.onPositionUpdate();
                     });
                 } else if (role === 'owner') {
-                    //TODO: DO a position of the other one - update callback...
+                    map.setEnemyPositionUpdateCallback(function () {
+                        if (map.getDistanceToTarget(true) <= max_target_distance) {
+                            window.alert('WALKER NAME has arrived');
+                            that.setMode('start_walk');
+                        }
+                    })
                 }
                 break;
             case 'start_walk':
+                if (!use_drive_to_walk_phase) {
+                    that.setMode('walk');
+                }
                 break;
             case 'walk':
                 time_start_of_walk = new Date();
@@ -84,6 +93,10 @@ function WalkCycleModel() {
                 });
                 break;
             case 'return':
+                if (!use_drive_to_walk_phase) {
+                    that.setMode('walk');
+                    break;
+                }
                 duration_of_walk = this.getDuration();
                 if (role === 'walker') {
                     map.setPositionUpdateCallback(function () {
@@ -142,8 +155,6 @@ function WalkCycleModel() {
             return 0;
         }
     };
-
-
 
     this.setPositionUpdateCallback = function (cb_function) {
         positionUpdateCallback = cb_function;
