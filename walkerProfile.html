@@ -20,7 +20,31 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="fetch.css"/>
     </head>
     <body>
-        <div>Do all the matching and profile stuff here</div>
+        <div>
+            <form class="inputForms">
+
+             	Which of these sounds most like you?:<br>
+             	<input type="radio" name="prefSize" value="small"> I prefer to walk small dogs.<br>
+  		<input type="radio" name="prefSize" value="medium"> I prefer to walk medium sized dogs.<br>
+  		<input type="radio" name="prefSize" value="big"> I prefer to walk large dogs.<br>
+                
+                How energetic are you?(will used to pair you with dogs of similar energy levels)<br>
+                Docile <input type="range" name="dogSize" min="0" max="2"> Energetic <br>
+
+  		Rate: £<input type="number" name="payRate"> <br>
+  		Distance: <input type="number" name="distance"> Km <br>
+                
+                Please select any of these which apply to you:<br>
+		<input type="checkbox" name="ballOption" value="Ball"> I don't mind playing with the dog(throwing a ball).<br>
+  		<input type="checkbox" name="dogOption" value="Dogs"> I will be walking other dogs.<br>
+  		<input type="checkbox" name="childOption" value="Children"> I have children<br>
+                <input type="checkbox" name="leadOption" value="Lead"> I don't mind using a lead<br>
+
+  		<!--<input type="submit" value ="Accept">-->
+
+
+             </form>
+        </div>
         <a class="design_button" href="walkCycle/walkCycle.html?role=walker">Finally, get To the walkcycle</a>
     </body>
 </html>

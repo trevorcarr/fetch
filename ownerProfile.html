@@ -20,7 +20,45 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="fetch.css"/>
     </head>
     <body>
-        <div>Do all the matching and profile stuff here</div>
+        <div>
+             <div class="inputForms">
+
+			<form>
+				What is your dog's name?: <br>
+				<input type="text" name="dogName"> <br>
+
+				Please add a photo of your dog: <br>
+                                <input type="file" name="dogPhoto" accept="image/*"><br>
+				<!-- Should this maybe be a dropdown box already containing dog breeds?-->
+				What kind of dog do you have?: <br>
+				<input type="text" name="dogBreed"> <br> 
+				<!-- Size slider, not really sure what the min/max values should be-->
+				How big is your dog?:<br>
+                                Small <input type="range" name="dogSize" min="0" max="2"> Big <br>
+                                
+                                How active is your dog?:<br>
+                                Docile <input type="range" name="dogSize" min="0" max="2"> Energetic <br>
+                                
+                                How much are you willing to pay?:<br>
+                                £<input type="number" name="payRate"> <br>
+                                
+                                How far does your dog like to be walked?:<br>
+                                Distance: <input type="number" name="distance"> Km <br>
+
+				Properties?:<br>
+				<input type="checkbox" name="ballOption" value="Ball"> My dog likes to play with a ball.<br>
+  				<input type="checkbox" name="dogOption" value="Dogs"> My dog interacts well with other dogs.<br>
+  				<input type="checkbox" name="childOption" value="Children"> My dog interacts well with children<br>
+                                <input type="checkbox" name="leadOption" value="Lead"> My dog requires a lead<br>
+
+
+  				<!--<input type="submit" value ="Accept">-->
+
+
+            </form>
+
+        </div>
+        </div>
         <a class="design_button" href="walkCycle/walkCycle.html?role=owner">Finally, get To the walkcycle</a>
     </body>
 </html>
