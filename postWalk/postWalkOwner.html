@@ -6,11 +6,38 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Fetch!</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link rel="icon" sizes="192x192" href="../images/bone.png"/>
+        <link rel="apple-touch-icon" href="../images/bone.png"/>
+        <link rel="shortcut icon" href="/images/bone.png" type="/image/x-icon"/>
+        
+        <link rel="stylesheet" type="text/css" href="../normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="../fetch.css"/>
+        <link rel="stylesheet" type="text/css" href="./postWalk.css"/>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>Submit profile picture here</div>
+        <!--<div id="post_map" class="map"></div>-->
+
+        <h2>How was DOGNAME and OWNERNAME?</h2> 
+        <div style="width: 90%"> 
+        <fieldset class="rating"> 
+            <legend>   Leave Rating Here:   </legend>
+            <input type="radio" id="5" name="rating" value="5"><label class ="full" for="5" title="Amazing job - 5 stars"></label>
+            <input type="radio" id="4" name="rating" value="4"><label class ="full" for="4" title="Good job - 4 stars"></label>
+            <input type="radio" id="3" name="rating" value="3"><label class ="full" for="3" title="job - 3 stars"></label>
+            <input type="radio" id="2" name="rating" value="2"><label class ="full" for="2" title="Meh job - 2 stars"></label>
+            <input type="radio" id="1" name="rating" value="1"><label class ="full" for="1" title="Bad job - 1 star"></label>
+        </fieldset>
+        </div>
+        <div></div>
+        <div>
+            <button type="submit" form="form1" value="Submit">Submit</button>
+        </div>
     </body>
 </html>

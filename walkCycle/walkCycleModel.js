@@ -4,28 +4,23 @@
 
 /*jslint node: true, browser: true */
 /*global google*/
+/*global Helper*/
 "use strict";
-var getUrlParameter = function (name) {
-    var argument_strings = window.location.href.split('?')[1].split('&');
-    for (var i = 0; i < argument_strings.length; i++) {
-        var argument_split = argument_strings[i].split('=');
-        if (argument_split.length > 1 && argument_split[0] === name) {
-            return argument_split[1];
-        }
-    }
-    return '';
-};
+
 
 function WalkCycleModel() {
-    var role = getUrlParameter('role'), //walker | owner
-        map = new Map('map_div'),
-        dog = null, //TODO: just a placeholder
-        setModeCallback = null,
-        mode = "",
-        max_target_distance = 10,//in metres
+    var role = (new Helper()).getUrlParameter('role'), //walker | owner
+            map = new Map('map_div'),
+            dog = null, //TODO: just a placeholder
+            setModeCallback = null,
+            mode = "",
+            max_target_distance = 15, //in metres
+            time_start_of_walk = null,
+            duration_of_walk = null,
+            positionUpdateCallback = null,
 //TODO I hat this! There has to be a better solution! :/ 
 //Reason for this: startwalk and stopwalk are onclick, therefore "this" is the button
-        that = this;
+            that = this;
 
 
     this.init = function () {
@@ -50,57 +45,57 @@ function WalkCycleModel() {
     this.setMode = function (m) {
         mode = m;
         console.log("model_mode: " + mode);
-        if (role === 'walker') {
-            switch (mode) {
+        switch (mode) {
             case 'pick_up':
                 map.clearPath();
-                map.setPositionUpdateCallback(function () {
-                    if (map.getDistanceToTarget() <= max_target_distance) {
-                        window.alert('reached target! Start walk:');
-                        that.setMode('start_walk');
-                    }
-                });
+                if (role == 'walker') {
+                    map.setPositionUpdateCallback(function () {
+                        if (map.getDistanceToTarget() <= max_target_distance) {
+                            window.alert('reached ' + dog.name + ' Hit start, as soon as you start walking!');
+                            that.setMode('start_walk');
+                        }
+                        that.onPositionUpdate();
+                    });
+                } else if (role == 'owner') {
+                    //TODO: DO a position of the other one - update callback...
+                }
                 break;
             case 'start_walk':
                 break;
             case 'walk':
+                time_start_of_walk = new Date();
                 map.updatePath();
                 map.setPositionUpdateCallback(function () {
                     map.updatePath();
                     console.log(map.getLengthOfPathInM());
+                    that.onPositionUpdate();
                 });
                 break;
             case 'return':
-                map.setPositionUpdateCallback(function () {
-                    if (map.getDistanceToTarget() <= max_target_distance) {
-                        window.alert('reached target! we should get to the finish page here! Instead, we are picking up again');
-                        that.setMode('pick_up');
-                    }
-                });
-                break;
-            default:
+                duration_of_walk = this.getDuration();
+                if (role == 'walker') {
+                    map.setPositionUpdateCallback(function () {
+                        if (map.getDistanceToTarget() <= max_target_distance) {
+                            window.open('../postWalk/postWalkWalker.html?path=' + map.getPathJson(), '_self');
+                        }
+                        that.onPositionUpdate();
+                    });
+                } else if (role == 'owner') {
+                    // TODO: Again, we need a on position of the other one - update...
+                }
 
                 break;
-            }
+            default:
+                break;
         }
-        else {
-               switch (mode) {
-            case 'pick_up':
-                break;
-            case 'start_walk':
-                break;
-            case 'walk':
-                break;
-            case 'return':
-                break;
-            default:
-
-                break;
-            }
-           }
         setModeCallback(mode, role);
     };
 
+    this.onPositionUpdate = function () {
+        if (positionUpdateCallback) {
+            positionUpdateCallback();
+        }
+    };
 
     this.getDog = function () {
         return dog;
@@ -111,13 +106,34 @@ function WalkCycleModel() {
     };
     var setMode = function (test) {
         window.alert(test);
-        
+
     };
     this.startWalk = function () {
         that.setMode("walk");
     };
-    
+
     this.stopWalk = function () {
         that.setMode("return");
     };
+
+    this.getLengthOfWalk = function () {
+        return map.getLengthOfPathInM();
+    };
+
+    this.getDuration = function () {
+        if (duration_of_walk) {
+            return duration_of_walk;
+        } else if (time_start_of_walk) {
+            var now = new Date();
+            return now - time_start_of_walk;
+        } else {
+            return 0;
+        }
+    };
+
+
+
+    this.setPositionUpdateCallback = function (cb_function) {
+        positionUpdateCallback = cb_function;
+    }
 }
