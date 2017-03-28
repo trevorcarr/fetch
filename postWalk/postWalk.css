@@ -9,6 +9,11 @@ and open the template in the editor.
 */
 .rating {
     clear: both;
+    outline-color: black;
+    border-color: black;
+    padding: 10%;
+
+    /*background-color: white;*/
 }
 
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
@@ -49,22 +54,10 @@ and open the template in the editor.
 
 
 .submit{
+    
 }
 
-header {
-    height: 9%;
-    background-color: lightblue;
-}
 
-main {
-    height: 81%;
-    background-color: skyblue;
-}
-
-footer {
-    height: 9%;
-    background-color: lightblue;
-}
 
 .map {
     height: 40%; 
@@ -79,6 +72,26 @@ legend {
 }
 
 h1{
-    alignment-adjust: center;
+    alignment-adjust: central;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    
+}
 
+ul{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.li {
+    display: inline-block;
+
+}
+
+h2{
+    text-align: center;
+}
+
+.ratings {
+    display: inline-block;  
 }

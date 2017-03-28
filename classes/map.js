@@ -20,7 +20,7 @@ function Map(map_div_id, marker_cb) {
             strokeWeight: 2,
             map: this.googleMap
         });
-    this.walker = {is_visible: false,
+    this.enemy = {is_visible: false,
                   marker: new google.maps.Marker({
                       
                       icon: {
@@ -49,21 +49,21 @@ function Map(map_div_id, marker_cb) {
         that.updatePosition();
         if(that.control_position && that.blue_marker.getPosition()) {
             that.googleMap.addListener("click", function (event) {
-                if(that.walker.is_visible) {
+                if(that.enemy.is_visible) {
                     //In reality, we would do this in a network listener and get the position from the network
-                    that.onwalkerPositionUpdate(event.latLng);
+                    that.onEnemyPositionUpdate(event.latLng);
                 } else {
                     that.onPositionUpdate(event.latLng);
                 }
-            }, false);
+            });
             clearInterval(id);
         }
     }, 500);
 }
 
-Map.prototype.showWalker = function (pos) {
-    this.walker.is_visible = true;
-    this.walker.marker.setPosition(pos);
+Map.prototype.showEnemy = function (pos) {
+    this.enemy.is_visible = true;
+    this.enemy.marker.setPosition(pos);
 };
 
 Map.prototype.addMarker = function (position, user_name, user_id, is_target) {
@@ -76,15 +76,16 @@ Map.prototype.addMarker = function (position, user_name, user_id, is_target) {
 
     marker.addListener('click', function () {
         _this.marker_callback(user_id);
-    }, false);
+    });
     
     if(is_target) {
         this.target_marker = marker;
     }
 };
 
-Map.prototype.updatePath = function () {
-    var position = this.blue_marker.getPosition();
+Map.prototype.updatePath = function (of_enemy) {
+    var user = (of_enemy) ? this.enemy.marker : this.blue_marker;
+    var position = user.getPosition();
     this.path.getPath().push(position);
 };
 
@@ -92,11 +93,11 @@ Map.prototype.clearPath = function () {
     this.path.getPath().clear();
 };
 
-Map.prototype.onwalkerPositionUpdate = function (pos) {
-    if (this.walker.is_visible) {
-        this.walker.marker.setPosition(pos);
-        if (this.walker.position_update_callback) {
-            this.walker.position_update_callback();
+Map.prototype.onEnemyPositionUpdate = function (pos) {
+    if (this.enemy.is_visible) {
+        this.enemy.marker.setPosition(pos);
+        if (this.enemy.position_update_callback) {
+            this.enemy.position_update_callback();
         }
         
     }
@@ -140,9 +141,10 @@ function calculateDistance(pos1, pos2) {
     return google.maps.geometry.spherical.computeDistanceBetween(pos1, pos2);
 }
 
-Map.prototype.getDistanceToTarget = function () {
-    if(this.target_marker && this.target_marker.getPosition() && this.blue_marker && this.blue_marker.getPosition()) {
-        return calculateDistance(this.blue_marker.getPosition(), this.target_marker.getPosition());
+Map.prototype.getDistanceToTarget = function (of_enemy) {
+    var user = (of_enemy) ? this.enemy.marker : this.blue_marker;
+    if(this.target_marker && this.target_marker.getPosition() && user && user.getPosition()) {
+        return calculateDistance(user.getPosition(), this.target_marker.getPosition());
     }
 };
 
@@ -164,6 +166,11 @@ Map.prototype.getPathJson = function () {
 Map.prototype.setPathJson = function (path_string) {
     this.path.setPath(JSON.parse(path_string));
     this.path.setMap(this.googleMap);
+    if (this.path.getPath().getLength() > 0) {
+        this.googleMap.setCenter(this.path.getPath().getAt(0));
+        this.is_centered=true;
+        this.googleMap.setZoom(14);
+    }
 };
 
 //Events:
@@ -177,6 +184,6 @@ Map.prototype.setMarkerClickCallback = function (cb_function) {
 };
 
 
-Map.prototype.setPositionOfwalkerCallback = function (cb_function) {
-    this.walker.position_update_callback = cb_function;
+Map.prototype.setEnemyPositionUpdateCallback = function (cb_function) {
+    this.enemy.position_update_callback = cb_function;
 };
