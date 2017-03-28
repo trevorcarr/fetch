@@ -40,7 +40,7 @@ function Map(map_div_id, marker_cb) {
         if(that.control_position && that.blue_marker.getPosition()) {
             that.googleMap.addListener("click", function (event) {
                 that.onPositionUpdate(event.latLng);
-            })
+            }, false);
             clearInterval(id);
         }
     }, 500);
@@ -56,7 +56,7 @@ Map.prototype.addMarker = function (position, user_name, user_id, is_target) {
 
     marker.addListener('click', function () {
         _this.marker_callback(user_id);
-    });
+    }, false);
     
     if(is_target) {
         this.target_marker = marker;
@@ -123,6 +123,15 @@ Map.prototype.getLengthOfPathInM = function () {
         length += calculateDistance(path.getAt(i-1), path.getAt(i));
     }
     return length;
+};
+
+Map.prototype.getPathJson = function () {
+    return JSON.stringify(this.path.getPath());
+};
+
+
+Map.prototype.setPathJson = function (path_string) {
+    this.path = JSON.parse(path_string);
 };
 
 //Events:

@@ -16,11 +16,15 @@ function WalkCycleController() {
             if(!model.PositionIsSet()) {
                 return;
             }
+            view.init();
             view.setGetDogCallback(model.getDog);
             view.setStartWalkCallback(model.startWalk);
-            view.setStopWalkCallback(model.stopWalk);            
+            view.setStopWalkCallback(model.stopWalk);
+            view.setGetDistanceCallback(model.getLengthOfWalk);
+            view.setGetDurationCallback(model.getDuration);
             model.init();
             model.setSetModeCallback(view.setMode);
+            model.setPositionUpdateCallback(view.onPositionUpdate);
             model.setMode("pick_up");
             clearInterval(interval_id);
         },250);
