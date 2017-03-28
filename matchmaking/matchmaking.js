@@ -8,27 +8,27 @@ function Matchmaking(ownerProfile, walkerProfiles) {
 }
 
 this.sortProfiles = function(ownerProfile, walkerProfiles) {
-    const ownerPrefs = ownerProfile.getPrefs();
-    const dogAttributes = ownerProfile.getDog().getAttributes();
+    var ownerPrefs = ownerProfile.getPrefs();
+    var dogAttributes = ownerProfile.getDog().getAttributes();
     
     var scores = [];
     
     for(i = 0; i < walkerProfiles.length; i++) {
-        const walkerProfile = walkerProfiles[i];
-        const walkerAttributes = walkerProfile.getAttributes();
-        const walkerPrefs = walkerProfile.getPrefs();
+        var walkerProfile = walkerProfiles[i];
+        var walkerAttributes = walkerProfile.getAttributes();
+        var walkerPrefs = walkerProfile.getPrefs();
         var score = 0;
         
         for(j = 0; j < walkerPrefs.length; j++) {
-            const pref = walkerPrefs[j];
-            const attr = dogAttributes[j];
+            var pref = walkerPrefs[j];
+            var attr = dogAttributes[j];
             
             score += comparePref(pref, attr);
         }
         
         for(j = 0; j < walkerPrefs.length; j++) {
-            const pref = ownerPrefs[j];
-            const attr = walkerAttributes[j];
+            var pref = ownerPrefs[j];
+            var attr = walkerAttributes[j];
             
             score += comparePref(pref, attr);
         }
@@ -80,7 +80,7 @@ this.addWalker = function(walker) {
 };
 
 this.removeWalker = function(walker) {
-    const index = this.walkerProfiles.indexOf(walker);
+    var index = this.walkerProfiles.indexOf(walker);
     if(index > -1) {
        this.walkerProfiles.splice(index, 1);
        update();

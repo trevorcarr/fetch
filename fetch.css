@@ -136,4 +136,12 @@ footer {
     display: none !important;
 }
 
+.inputForms {
+   
+}
+
+input[type=text], input[type=number] {
+        border: 1px solid black;
+        width: 70vw;
+}
 
