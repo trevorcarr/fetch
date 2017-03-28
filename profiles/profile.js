@@ -6,6 +6,8 @@ function Profile(name, id) {
     this.ratings = [];
     this.attributes = [];
     this.prefs = [];
+    this.longitude = null;
+    this.latitude = null;
     
     this.getPrefs = function() {
         return this.prefs;
@@ -23,8 +25,17 @@ function Profile(name, id) {
         this.attributes.push(a);
     };
 
+    this.addAttributes = function(a) {
+        this.attributes = this.attributes.concat(a);
+    };
+
     this.addRating = function(r) {
         this.ratings.push(r);
+    };
+    
+    this.setLocation = function(lat, long) {
+        this.latitude = lat;
+        this.longitude = long;
     };
 
     this.removePref = function(id) {

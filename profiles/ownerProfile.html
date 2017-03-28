@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Fetch!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link rel="icon" sizes="192x192" href="images/bone.png"/>
+        <link rel="apple-touch-icon" href="images/bone.png"/>
+        <link rel="shortcut icon" href="images/bone.png" type="image/x-icon"/>
+        
+        <link rel="stylesheet" type="text/css" href="../normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="../fetch.css"/>
+    </head>
+    <body>
+        <header></header>
+        <main>
+            <div>
+                 <div class="inputForms">
+
+                            <form id="dogAttr" action="">
+                                    What is your dog's name?: <br>
+                                    <input type="text" name="dogName"> <br>
+
+                                    Please add a photo of your dog: <br>
+                                    <input type="file" name="dogPhoto" accept="image/*"><br>
+                                    <!-- Should this maybe be a dropdown box already containing dog breeds?-->
+                                    What kind of dog do you have?: <br>
+                                    <input type="text" name="dogBreed"> <br> 
+                                    <!-- Size slider, not really sure what the min/max values should be-->
+                                    How big is your dog?:<br>
+                                    Small <input type="range" name="dogSize" min="0" max="2"> Big <br>
+
+                                    How active is your dog?:<br>
+                                    Docile <input type="range" name="dogSize" min="0" max="2"> Energetic <br>
+
+                                    How much are you willing to pay?:<br>
+                                    £<input type="number" name="payRate"> <br>
+
+                                    How far does your dog like to be walked?:<br>
+                                    Distance: <input type="number" name="distance"> Km <br>
+
+                                    Properties?:<br>
+                                    <input type="checkbox" name="ballOption" value="Ball"> My dog likes to play with a ball.<br>
+                                    <input type="checkbox" name="dogOption" value="Dogs"> My dog interacts well with other dogs.<br>
+                                    <input type="checkbox" name="childOption" value="Children"> My dog interacts well with children<br>
+                                    <input type="checkbox" name="leadOption" value="Lead"> My dog requires a lead<br>
+
+                </form>
+                <button id="submit">Accept</button>
+
+                </div>
+            </div>
+
+        </main>
+        
+        <footer></footer>
+        
+        <script src="profileModel.js"></script>
+        <script src="profileView.js"></script>
+        <script src="profile.js"></script>
+        <script src="preference.js"></script>
+        <script src="form.js"></script>
+        <script src="profileController.js"></script>
+    </body>
+</html>

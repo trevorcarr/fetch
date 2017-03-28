@@ -1,5 +1,5 @@
 
-function MatchmakingView() {
+function ProfileView() {
     
     var cb_function = function(id) {
             document.getElementById("show_user").innerHTML = id;
@@ -11,13 +11,7 @@ function MatchmakingView() {
     var form = document.getElementById("dogAttr");
     var submitButton = document.getElementById("submit");
     
-    this.addAttrInput = function(str, name, type, raw) {
-        var input = {
-            str : str,
-            name : name,
-            type: type,
-            raw : raw
-        };
+    this.addAttrInput = function(input) {
         inputs.push(input);
         this.updateInputs();
     };
@@ -31,6 +25,7 @@ function MatchmakingView() {
         for(i = 0; i < inputs.length; i++) {
             var input = inputs[i];
             form.innerHTML += htmlInput(input);
+            form.innerHTML += "\n";
         }
     };
     
@@ -46,6 +41,7 @@ function MatchmakingView() {
             + "<input type =\"" + type + "\" name=\"" + input.name + "\""
             +  input.raw + ">" 
             + "</div>";
+    
             
         return str;
     };
