@@ -24,10 +24,22 @@ function WalkCycleModel() {
 
 
     this.init = function () {
+        var my_pos = map.getPosition();
+        var pos = new google.maps.LatLng(my_pos.lat(), my_pos.lng() + 0.01);
+        var target_name = null;
+        var target_position = null;
         dog = {name: "Fido",
-            position: map.getPosition()};
-        dog.position = new google.maps.LatLng(dog.position.lat(), dog.position.lng() + 0.01);
-        map.addMarker(dog.position, dog.name, 1, true);
+            position: null};
+        if (role === 'walker') {
+            dog.position = pos;
+            target_name = dog.name;
+            target_position = dog.position;
+        } else if (role === 'owner') {
+            map.showWalker(pos);
+            target_name = 'owners name';
+            target_position = my_pos;
+        }
+        map.addMarker(target_position, target_name, 1, true);
         map.setMarkerClickCallback(this.onMarkerClick);
     };
 
@@ -48,7 +60,7 @@ function WalkCycleModel() {
         switch (mode) {
             case 'pick_up':
                 map.clearPath();
-                if (role == 'walker') {
+                if (role === 'walker') {
                     map.setPositionUpdateCallback(function () {
                         if (map.getDistanceToTarget() <= max_target_distance) {
                             window.alert('reached ' + dog.name + ' Hit start, as soon as you start walking!');
@@ -56,7 +68,7 @@ function WalkCycleModel() {
                         }
                         that.onPositionUpdate();
                     });
-                } else if (role == 'owner') {
+                } else if (role === 'owner') {
                     //TODO: DO a position of the other one - update callback...
                 }
                 break;
@@ -73,14 +85,14 @@ function WalkCycleModel() {
                 break;
             case 'return':
                 duration_of_walk = this.getDuration();
-                if (role == 'walker') {
+                if (role === 'walker') {
                     map.setPositionUpdateCallback(function () {
                         if (map.getDistanceToTarget() <= max_target_distance) {
                             window.open('../postWalk/postWalkWalker.html?path=' + map.getPathJson(), '_self');
                         }
                         that.onPositionUpdate();
                     });
-                } else if (role == 'owner') {
+                } else if (role === 'owner') {
                     // TODO: Again, we need a on position of the other one - update...
                 }
 
