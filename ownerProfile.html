@@ -23,7 +23,7 @@ and open the template in the editor.
         <div>
              <div class="inputForms">
 
-			<form>
+			<form id="dogAttr" action="">
 				What is your dog's name?: <br>
 				<input type="text" name="dogName"> <br>
 
@@ -51,14 +51,17 @@ and open the template in the editor.
   				<input type="checkbox" name="childOption" value="Children"> My dog interacts well with children<br>
                                 <input type="checkbox" name="leadOption" value="Lead"> My dog requires a lead<br>
 
-
-  				<!--<input type="submit" value ="Accept">-->
-
-
             </form>
+            <button id="submit">Accept</button>
 
         </div>
         </div>
         <a class="design_button" href="walkCycle/walkCycle.html?role=owner">Finally, get To the walkcycle</a>
+        
+        <script src="matchmaking/matchmakingModel.js"></script>
+        <script src="matchmaking/matchmakingView.js"></script>
+        <script src="matchmaking/profile.js"></script>
+        <script src="matchmaking/preference.js"></script>
+        <script src="matchmaking/matchmakingController.js"></script>
     </body>
 </html>

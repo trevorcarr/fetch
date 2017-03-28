@@ -1,15 +1,20 @@
+/* global profile */
 
 function MatchmakingModel(ownerProfile, walkerProfiles) {
     
     this.ownerProfile = ownerProfile;
     this.walkerProfiles = walkerProfiles;
     
-    this.scoreMap = sortProfiles(ownerProfile, walkerProfiles);
+    this.scoreMap;
     
+    this.init = function() {
+        this.scoreMap = this.sortProfiles(this.ownerProfile, this.walkerProfiles);
+    };
     
     this.sortProfiles = function(ownerProfile, walkerProfiles) {
+        
         const ownerPrefs = ownerProfile.getPrefs();
-        const dogAttributes = ownerProfile.getDog().getAttributes();
+        const dogAttributes = ownerProfile.getAttributes();
 
         var scores = [];
 
@@ -35,10 +40,10 @@ function MatchmakingModel(ownerProfile, walkerProfiles) {
             scores[i] = score;
         }
         //TODO sort walkerProfiles based on scores
-        var map = new Map(walkerProfiles);
+        var map = new Map();
 
         for(i = 0; i < walkerProfiles.length; i++) {
-            map.put(walkerProfiles[i], scores[i]);
+            map.set(walkerProfiles[i], scores[i]);
         }
 
         return map;

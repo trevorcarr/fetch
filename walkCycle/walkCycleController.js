@@ -33,4 +33,4 @@ function WalkCycleController() {
 
 
 var controller = new WalkCycleController();
-window.addEventListener("load", controller.init);
+window.addEventListener('load', controller.init);

@@ -20,11 +20,21 @@ function Map(map_div_id, marker_cb) {
             strokeWeight: 2,
             map: this.googleMap
         });
-    this.position = null;
+    this.walker = {is_visible: false,
+                  marker: new google.maps.Marker({
+                      
+                      icon: {
+                          path: google.maps.SymbolPath.CIRCLE,
+                          scale: 5
+                      },
+                      map: this.googleMap
+                  }),
+                  position_update_callback: null
+              };
     this.blue_marker = new google.maps.Marker({
             icon: '../images/bluecircle.png',
             map: this.googleMap
-    });
+    }); //blue marker is always me! Not the walker
     this.target_marker = null;
     this.is_centered = false;
     this.control_position = true;   //  For debugging: If this is true, after the initial gps location is found, 
@@ -39,12 +49,22 @@ function Map(map_div_id, marker_cb) {
         that.updatePosition();
         if(that.control_position && that.blue_marker.getPosition()) {
             that.googleMap.addListener("click", function (event) {
-                that.onPositionUpdate(event.latLng);
+                if(that.walker.is_visible) {
+                    //In reality, we would do this in a network listener and get the position from the network
+                    that.onwalkerPositionUpdate(event.latLng);
+                } else {
+                    that.onPositionUpdate(event.latLng);
+                }
             }, false);
             clearInterval(id);
         }
     }, 500);
 }
+
+Map.prototype.showWalker = function (pos) {
+    this.walker.is_visible = true;
+    this.walker.marker.setPosition(pos);
+};
 
 Map.prototype.addMarker = function (position, user_name, user_id, is_target) {
     var marker = new google.maps.Marker({
@@ -71,6 +91,17 @@ Map.prototype.updatePath = function () {
 Map.prototype.clearPath = function () {
     this.path.getPath().clear();
 };
+
+Map.prototype.onwalkerPositionUpdate = function (pos) {
+    if (this.walker.is_visible) {
+        this.walker.marker.setPosition(pos);
+        if (this.walker.position_update_callback) {
+            this.walker.position_update_callback();
+        }
+        
+    }
+};
+
 
 Map.prototype.onPositionUpdate = function (pos) {
     this.blue_marker.setPosition(pos);
@@ -126,12 +157,13 @@ Map.prototype.getLengthOfPathInM = function () {
 };
 
 Map.prototype.getPathJson = function () {
-    return JSON.stringify(this.path.getPath());
+    return JSON.stringify(this.path.getPath().getArray());
 };
 
 
 Map.prototype.setPathJson = function (path_string) {
-    this.path = JSON.parse(path_string);
+    this.path.setPath(JSON.parse(path_string));
+    this.path.setMap(this.googleMap);
 };
 
 //Events:
@@ -142,4 +174,9 @@ Map.prototype.setPositionUpdateCallback = function (cb_function) {
 
 Map.prototype.setMarkerClickCallback = function (cb_function) {
     this.marker_callback = cb_function;
+};
+
+
+Map.prototype.setPositionOfwalkerCallback = function (cb_function) {
+    this.walker.position_update_callback = cb_function;
 };
