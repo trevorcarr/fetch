@@ -74,14 +74,18 @@ legend {
 h1{
     alignment-adjust: central;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    
 }
 
 ul{
     text-align: center;
+    margin-bottom: 10px;
 }
 .li {
     display: inline-block;
-    
+
 }
 
 h2{

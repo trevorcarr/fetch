@@ -18,7 +18,7 @@
         document.getElementById("distance").innerHTML = "Distance: " + distance + " km";
         var duration = (new Helper().getUrlParameter('time'));
         document.getElementById("minutes").innerHTML = "Time: " + parseInt(duration).formatTime();
-        document.getElementById("price").innerHTML = "Price: " + "£" + (distance*10);
+        document.getElementById("price").innerHTML = "Price: " + "£" + (distance*10).toFixed(2);
         
         
       }
