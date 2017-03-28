@@ -75,35 +75,33 @@ function WalkCycleModel() {
                             window.alert('WALKER NAME has arrived');
                             that.setMode('start_walk');
                         }
-                    })
+                    });
                 }
                 break;
             case 'start_walk':
                 if (!use_drive_to_walk_phase) {
                     that.setMode('walk');
+                    return;
                 }
                 break;
             case 'walk':
                 time_start_of_walk = new Date();
-                map.updatePath();
-                map.setPositionUpdateCallback(function () {
-                    map.updatePath();
-                    console.log(map.getLengthOfPathInM());
-                    that.onPositionUpdate();
-                });
+                map.updatePath(role === 'owner');
+                if(role === 'walker') {
+                    map.setPositionUpdateCallback(function () {
+                        that.onPositionUpdate();
+                        that.walkerPositionUpdate();
+                    });
+                } else if (role === 'owner') {
+                    map.setEnemyPositionUpdateCallback(that.walkerPositionUpdate);
+                }
                 break;
             case 'return':
-                if (!use_drive_to_walk_phase) {
-                    that.setMode('walk');
-                    break;
-                }
                 duration_of_walk = this.getDuration();
                 if (role === 'walker') {
                     map.setPositionUpdateCallback(function () {
-                        if (map.getDistanceToTarget() <= max_target_distance) {
-                            window.open('../postWalk/postWalkWalker.html?path=' + encodeURIComponent(map.getPathJson()), '_self');
-                        }
                         that.onPositionUpdate();
+                        that.finishWalkIfAtTarget();
                     });
                 } else if (role === 'owner') {
                     // TODO: Again, we need a on position of the other one - update...
@@ -113,7 +111,23 @@ function WalkCycleModel() {
             default:
                 break;
         }
-        setModeCallback(mode, role);
+        setModeCallback(mode, role, use_drive_to_walk_phase);
+    };
+    
+    this.walkerPositionUpdate = function () {
+        map.updatePath(role === 'owner');
+        console.log(map.getLengthOfPathInM());
+        if(!use_drive_to_walk_phase) {
+            that.finishWalkIfAtTarget(role === 'owner');
+            return;
+        }
+        
+    };
+    
+    this.finishWalkIfAtTarget = function (of_enemy) {
+        if (map.getDistanceToTarget(of_enemy) <= max_target_distance) {
+            window.open('../postWalk/postWalkWalker.html?path=' + encodeURIComponent(map.getPathJson()), '_self');
+        }
     };
 
     this.onPositionUpdate = function () {

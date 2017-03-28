@@ -55,7 +55,7 @@ function Map(map_div_id, marker_cb) {
                 } else {
                     that.onPositionUpdate(event.latLng);
                 }
-            }, false);
+            });
             clearInterval(id);
         }
     }, 500);
@@ -76,15 +76,16 @@ Map.prototype.addMarker = function (position, user_name, user_id, is_target) {
 
     marker.addListener('click', function () {
         _this.marker_callback(user_id);
-    }, false);
+    });
     
     if(is_target) {
         this.target_marker = marker;
     }
 };
 
-Map.prototype.updatePath = function () {
-    var position = this.blue_marker.getPosition();
+Map.prototype.updatePath = function (of_enemy) {
+    var user = (of_enemy) ? this.enemy.marker : this.blue_marker;
+    var position = user.getPosition();
     this.path.getPath().push(position);
 };
 

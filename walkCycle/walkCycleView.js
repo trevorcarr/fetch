@@ -43,7 +43,7 @@ function WalkCycleView() {
         overview.classList.toggle('hidden');
     };
 
-    this.setMode = function (mode, role) {
+    this.setMode = function (mode, role, use_drive_to_walk_phase) {
         console.log("view_mode: " + mode);
         switch (mode) {
             case 'pick_up':
@@ -60,10 +60,12 @@ function WalkCycleView() {
                 if (role === 'walker') {
                     walk_headline_div.textContent = 'Going to start a walk with ' + getDogCallback().name;
                     menuButton.classList.remove('hidden');
-                    toggleWalkButton.classList.remove('hidden');
-                    toggleWalkButton.textContent = 'start';
-                    toggleWalkButton.addEventListener("click", startWalkCallback);
-                    toggleWalkButton.removeEventListener("click", stopWalkCallback);
+                    if(use_drive_to_walk_phase) {
+                        toggleWalkButton.classList.remove('hidden');
+                        toggleWalkButton.textContent = 'start';
+                        toggleWalkButton.addEventListener("click", startWalkCallback);
+                        toggleWalkButton.removeEventListener("click", stopWalkCallback);
+                    }
                 } else if (role === 'owner') {
                     walk_headline_div.textContent = getDogCallback().name + 'is being taken to his walk';
                 }
@@ -72,10 +74,12 @@ function WalkCycleView() {
                 if (role === 'walker') {
                     walk_headline_div.textContent = 'Walking with ' + getDogCallback().name;
                     menuButton.classList.remove('hidden');
-                    toggleWalkButton.classList.remove('hidden');
-                    toggleWalkButton.textContent = 'stop';
-                    toggleWalkButton.addEventListener("click", stopWalkCallback);
-                    toggleWalkButton.removeEventListener("click", startWalkCallback);
+                    if(use_drive_to_walk_phase) {
+                        toggleWalkButton.classList.remove('hidden');
+                        toggleWalkButton.textContent = 'stop';
+                        toggleWalkButton.addEventListener("click", stopWalkCallback);
+                        toggleWalkButton.removeEventListener("click", startWalkCallback);
+                    }
                 } else if (role === 'owner') {
                     walk_headline_div.textContent = getDogCallback().name + ' is on his walk';
                 }
@@ -87,7 +91,9 @@ function WalkCycleView() {
                 if (role === 'walker') {
                     walk_headline_div.textContent = 'Returning ' + getDogCallback().name;
                     menuButton.classList.remove('hidden');
-                    toggleWalkButton.classList.add('hidden');
+                    if(use_drive_to_walk_phase) {
+                        toggleWalkButton.classList.add('hidden');
+                    }
                 } else if (role == 'owner') {
                     walk_headline_div.textContent = getDogCallback().name + ' is returning';
                 }
