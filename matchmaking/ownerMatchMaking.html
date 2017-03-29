@@ -12,27 +12,30 @@
         
         <link rel="stylesheet" type="text/css" href="../normalize.css"/>
         <link rel="stylesheet" type="text/css" href="../fetch.css"/>
+        <link rel="stylesheet" type="text/css" href="matchmaking.css"/>
     </head>
     <body>
-        <header></header>
+        <header>FETCH!</header>
         <main>
                 <div id="map_div" class="map"></div>
-                <div id="show_user"></div>
-                <div class="info_div" id="bottom_info">
-                    <a class="design_button hidden" id="toggle_walk_button"></a>
+                
+                <div id="userDisplay" class="floatOver">
+                    <div id="userName"></div>
+                    <div id="userPhoto"></div>
                 </div>
+                <button id="closeUser" class="floatOver">X</button>
+                <button id="confirmUser" class="floatOver">CONFIRM</button>
         </main>
 
-        <footer>
-        </footer>
         
-          <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo&libraries=geometry">
-          </script>
-          <script src="../classes/map.js"></script>
-          <script src="../classes/helper.js"></script>
-          <script src="matchmakingModel.js"></script>
-          <script src="matchmakingView.js"></script>
-          <script src="matchmakingController.js"></script>
+        
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo&libraries=geometry">
+        </script>
+        <script src="../classes/map.js"></script>
+        <script src="../classes/helper.js"></script>
+        <script src="matchmakingModel.js"></script>
+        <script src="matchmakingView.js"></script>
+        <script src="matchmakingController.js"></script>
     </body>
 </html>

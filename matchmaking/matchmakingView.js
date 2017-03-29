@@ -3,7 +3,13 @@
 function MatchmakingView(cb_function) {
 
     var map = new Map('map_div', cb_function);
-    var display = document.getElementById("show_user");
+    var nameDisplay = document.getElementById("userName");
+    var imgDisplay = document.getElementById("userPhoto");
+    var confirmButton = document.getElementById("confirmUser");
+    var closeButton = document.getElementById("closeUser");
+    
+
+    
 
     this.addMainMarker = function(name, id) {
         map.addMarker(map.getPosition(), name, id, true);
@@ -17,11 +23,33 @@ function MatchmakingView(cb_function) {
         return map;
     };
     
-    this.displayProfile = function(profile) {
-        display.innerHTML = "";
-        display.innerHTML += "<span id =\"userName\">" + profile.name + "</span>";
-        display.innerHTML += "<img id=\"userPhoto\" src=\"../images/profile" + profile.id + ".png\"></img>";
+    this.displayProfile = function(profile, buttons) {
+        nameDisplay.innerHTML = profile.name;
+        imgDisplay.innerHTML = "<img id=\"userPhoto\" src=\"../images/profile" + profile.id + ".jpg\"></img>";
+        if(buttons) {
+            showButtons();
+        } else {
+            hideButtons();
+        }
     };
+    
+    this.setCloseButtonCallback = function(cb) {
+        closeButton.addEventListener("click", cb);
+    };
+    
+    this.setConfirmButtonCallback = function(cb) {
+        confirmButton.addEventListener("click", cb);
+    };
+    
+    function showButtons() {
+        confirmButton.style.display = "block";
+        closeButton.style.display = "block";
+    }
+    
+    function hideButtons() {    
+        confirmButton.style.display = "none";
+        closeButton.style.display = "none";
+    }
     
     function isMatch() {
         return Math.random() >= 0.5;

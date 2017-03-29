@@ -6,7 +6,23 @@ var controller = null;
 function MatchmakingController() {
     
     var activeProfile = model.getActiveProfile();
-    view.addMainMarker(activeProfile.name, activeProfile.id);
+    const myProfile = activeProfile;
+    
+    view.addMainMarker(myProfile.name, myProfile.id);
+    view.displayProfile(myProfile, false);
+    
+    view.setCloseButtonCallback(function() {
+        view.displayProfile(myProfile, false);
+        activeProfile = myProfile;
+    });
+    
+    view.setConfirmButtonCallback(function() {
+        model.setWalker(activeProfile);
+        console.log(activeProfile);
+        model.storeData();
+        window.location.replace("../walkCycle/walkCycle.html?=owner");
+    });
+    
     var map = view.getMap();
     var profiles = model.getProfiles();
     
@@ -17,9 +33,8 @@ function MatchmakingController() {
             for(var i = 0; i < profiles.length; i++) {
             var profile = profiles[i];
             var pos = map.getPosition();
-            console.log(pos);
-            var lat = pos.lat() + (Math.random() * 0.1);
-            var long = pos.lng() + (Math.random() * 0.1);
+            var lat = pos.lat() + ((Math.random()-0.5) * 0.05);
+            var long = pos.lng() + ((Math.random()-0.5) * 0.05);
             pos = {lat: lat, lng: long};
             view.addMarker(pos, profile.name, profile.id);
             
@@ -27,7 +42,8 @@ function MatchmakingController() {
     }
     
     map.setMarkerClickCallback(function(id) {
-        view.displayProfile(model.getProfile(id));
+        view.displayProfile(model.getProfile(id), true);
+        activeProfile = model.getProfile(id);
     });
         },250);
 }
