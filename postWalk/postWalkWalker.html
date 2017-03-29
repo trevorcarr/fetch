@@ -25,17 +25,25 @@ and open the template in the editor.
         <main>
             <div id="post_map" class="map"></div>
             <h1>Your recent walk</h1>
-                <ul id="trip_stats" style="list-style-type: none">
-                    <li id="distance"></li>
-                    <li id="minutes"></li>
-                    <li id="price"></li>
-                </ul>
             
-            <h2>How was DOGNAME and OWNERNAME?</h2>    
+            <table id="trip_stats" >
+                <tr>
+                    <th>Distance:</th>
+                    <td id="distance"></td>
+                </tr>
+                <tr>
+                    <th>Time:</th>
+                    <td id="minutes"></td>
+                </tr>
+                <tr>
+                    <th>Price:</th>
+                    <td id="price"></td>
+                </tr>   
+            </table>
             
-            <div></div>
+            <h2 id="howWere"></h2>    
             
-            <div id="ratings" style="width: 90%"> 
+            <div id="ratingBox"> 
                 <fieldset class="rating"> 
                     <legend>   Leave Rating Here:   </legend>
                         <input type="radio" id="1" name="rating" value="1"><label class ="full" for="1" title="Bad job - 1 star"></label>
@@ -45,11 +53,9 @@ and open the template in the editor.
                         <input type="radio" id="5" name="rating" value="5"><label class ="full" for="5" title="Amazing job - 5 stars"></label>
                 </fieldset>
             </div>
-        
-            <div>
+            <div id="submitButton">
                 <button type="submit" form="form1" value="Submit">Submit</button>
             </div>
-            
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo&libraries=geometry"></script>
             <script src="postWalk.js"></script>
             <script src="../classes/map.js"></script>

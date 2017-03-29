@@ -145,3 +145,7 @@ input[type=text], input[type=number] {
         width: 70vw;
 }
 
+#owner_button {
+    text-align: center;
+    vertical-align: central;
+}
