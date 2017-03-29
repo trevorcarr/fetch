@@ -10,24 +10,58 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         
-        <meta name="mobile-web-app-capable" content="yes"/>
+        <!--<meta name="mobile-web-app-capable" content="yes"/>-->
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <link rel="icon" sizes="192x192" href="../images/bone.png"/>
         <link rel="apple-touch-icon" href="../images/bone.png"/>
-        <link rel="shortcut icon" href="../images/bone.png" type="image/x-icon"/>
-        
+        <link rel="shortcut icon" href="../images/bone.png"/>
         <link rel="stylesheet" type="text/css" href="../normalize.css"/>
         <link rel="stylesheet" type="text/css" href="../fetch.css"/>
+        <link rel="stylesheet" type="text/css" href="./postWalk.css"/>
+    
     </head>
     <body>
-        <h1>Dog/Owner Rating System</h1>
-        <fieldset class="rating">
-            <legend>Leave Rating Here</legend>
-            <input type="radio" id="5" name="rating" value="5"><label class ="full" for="5" title="Amazing job - 5 stars"></label>
-            <input type="radio" id="4" name="rating" value="4"><label class ="full" for="4" title="Good job - 4 stars"></label>
-            <input type="radio" id="3" name="rating" value="3"><label class ="full" for="3" title="job - 3 stars"></label>
-            <input type="radio" id="2" name="rating" value="2"><label class ="full" for="2" title="Meh job - 2 stars"></label>
-            <input type="radio" id="1" name="rating" value="1"><label class ="full" for="1" title="Bad job - 1 star"></label>
-        </fieldset>
+        <header></header>
+        <main>
+            <div id="post_map" class="map"></div>
+            <h1>Your recent walk</h1>
+            
+            <table id="trip_stats" >
+                <tr>
+                    <th>Distance:</th>
+                    <td id="distance"></td>
+                </tr>
+                <tr>
+                    <th>Time:</th>
+                    <td id="minutes"></td>
+                </tr>
+                <tr>
+                    <th>Price:</th>
+                    <td id="price"></td>
+                </tr>   
+            </table>
+            
+            <h2 id="howWere"></h2>    
+            
+            <div id="ratingBox"> 
+                <fieldset class="rating"> 
+                    <legend>   Leave Rating Here:   </legend>
+                        <input type="radio" id="1" name="rating" value="1"><label class ="full" for="1" title="Bad job - 1 star"></label>
+                        <input type="radio" id="2" name="rating" value="2"><label class ="full" for="2" title="Meh job - 2 stars"></label>
+                        <input type="radio" id="3" name="rating" value="3"><label class ="full" for="3" title="job - 3 stars"></label>
+                        <input type="radio" id="4" name="rating" value="4"><label class ="full" for="4" title="Good job - 4 stars"></label>
+                        <input type="radio" id="5" name="rating" value="5"><label class ="full" for="5" title="Amazing job - 5 stars"></label>
+                </fieldset>
+            </div>
+            <div id="submitButton">
+                <button type="submit" form="form1" value="Submit">Submit</button>
+            </div>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo&libraries=geometry"></script>
+            <script src="postWalk.js"></script>
+            <script src="../classes/map.js"></script>
+            <script src="../classes/helper.js"></script>
+        </main>
+        <footer></footer>
     </body>
 </html>
+

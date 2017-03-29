@@ -5,13 +5,12 @@
  */
 
 
-      function initMap() {
+      function init() {
         var map = new Map('post_map');
         var path = (new Helper ()).getItemFromLocalStorage('path');
-        
         map.setPathJson(path);
         tripStats(map);
-        ownerName();
+        name();
       }
       
       function tripStats(map) {
@@ -21,8 +20,6 @@
         var duration = parseInt(JSON.parse((new Helper ()).getItemFromLocalStorage('time')));
         document.getElementById("minutes").innerHTML =  parseInt(duration).formatTime();
         document.getElementById("price").innerHTML = "£" + (distance*10).toFixed(2);
-        
-        
       }
       
       function fixDistance(distance){
@@ -33,7 +30,19 @@
         
       }
       
-      function ownerName(){
-          document.getElementById("howWere").innerHTML = "How were " + "" + "and " + "?";
+      function name(){
+          if(window.location.pathname.split("/").slice(-1)[0] == 'postWalkOwner.html'){
+              document.getElementById("howWere").innerHTML = "How was " + "?";
+          } else {
+              document.getElementById("howWere").innerHTML = "How were " + "" + "and " + "?";
+          }
       }
-      window.addEventListener("load", initMap);
+      
+      function calculateAverageReview(){
+          //get owner/ walker current rating 
+          //multiply by the number of ratings
+          //add the new rating 
+          //divide by number of ratings plus one
+          //return rating
+      }
+      window.addEventListener("load", init);
