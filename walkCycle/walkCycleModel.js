@@ -35,7 +35,8 @@ function WalkCycleModel() {
         dog = {name: "Fido",
             owner_name: owner.name,
             position: null,
-            average_rating: owner.getScore(),
+//            average_rating: owner.getScore(),
+            average_rating: 4,
             ratings:owner.ratings.length};
         
         if (role === 'walker') {
@@ -134,7 +135,12 @@ function WalkCycleModel() {
         if (map.getDistanceToTarget(of_enemy) <= max_target_distance) {
             var url_path = encodeURIComponent(map.getPathJson()),
                 url_duration = encodeURIComponent(that.getDuration());
+        if (role === 'owner') {
+            window.alert(walker.name + ' returned with ' + dog.name);
+        } else if (role === 'walker') {
             window.alert(dog.name + ' is reunited with ' + dog.owner_name);
+            }
+
             (new Helper ()).setItemInLocalStorage("path", map.getPathJson());
             (new Helper ()).setItemInLocalStorage("time", JSON.stringify(that.getDuration()));
             (new Helper ()).setItemInLocalStorage("owner_name", JSON.stringify(dog.owner_name));

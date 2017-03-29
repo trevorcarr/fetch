@@ -20,7 +20,7 @@ function MatchmakingController() {
         model.setWalker(activeProfile);
         console.log(activeProfile);
         model.storeData();
-        window.location.replace("../walkCycle/walkCycle.html?=owner");
+        window.location.replace("../walkCycle/walkCycle.html?role=owner");
     });
     
     var map = view.getMap();

@@ -10,6 +10,7 @@ function WalkCycleView() {
     var topInfo_div = document.getElementById("top_info");
     var toggleWalkButton = document.getElementById("toggle_walk_button");
     var overview = document.getElementById("walkOverview");
+    
     var distance_div = document.getElementById('distance');
     var duration_div = document.getElementById('duration');
     var walk_headline_div = document.getElementById('walk_headline_div');
