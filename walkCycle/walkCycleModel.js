@@ -12,10 +12,8 @@ function WalkCycleModel() {
     var role = (new Helper()).getUrlParameter('role'), //walker | owner
             map = new Map('map_div'),
             dog = null, //TODO: just a placeholder
-            owner = null,
-            walker = {name: 'the walker',
-                      average_rating: 4.7,
-                      ratings: 520},
+            owner = JSON.parse(localStorage.getItem("owner")),
+            walker = JSON.parse(localStorage.getItem("walker")),
             setModeCallback = null,
             mode = "",
             max_target_distance = 50, //in metres
@@ -34,11 +32,11 @@ function WalkCycleModel() {
         var target_name = null;
         var target_position = null;
         dog = {name: "Fido",
-           //TODO!
-            owner_name: 'his owner!',
+            owner_name: owner.name,
             position: null,
-            average_rating: 4.1,
-            ratings:410};
+            average_rating: owner.getScore(),
+            ratings:owner.ratings.length};
+        
         if (role === 'walker') {
             dog.position = pos;
             target_name = dog.name;
@@ -80,7 +78,7 @@ function WalkCycleModel() {
                 } else if (role === 'owner') {
                     map.setEnemyPositionUpdateCallback(function () {
                         if (map.getDistanceToTarget(true) <= max_target_distance) {
-                            window.alert('WALKER NAME has arrived');
+                            window.alert(walker.name + ' has arrived');
                             that.setMode('start_walk');
                         }
                     });

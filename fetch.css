@@ -12,6 +12,7 @@ and open the template in the editor.
     margin: 0;
     border: none;
     
+    
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
@@ -42,6 +43,9 @@ a {
 header {
     height: 5%;
     background-color: lightblue;
+    text-align: center;
+    color: white;
+    padding: 0.3rem;
 }
 
 main {

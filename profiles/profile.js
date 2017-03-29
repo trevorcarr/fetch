@@ -9,6 +9,12 @@ function Profile(name, id) {
     this.longitude = null;
     this.latitude = null;
     
+    var ratingsNum = Math.floor((Math.random() * 10) + 1);
+    
+    for(i = 0; i < ratingsNum; i++) {
+        this.ratings.push(Math.floor((Math.random() * 5)));
+    }
+    
     this.getPrefs = function() {
         return this.prefs;
     };
