@@ -17,17 +17,10 @@
       function tripStats(map) {
         distance = map.getLengthOfPathInM();
         distance = fixDistance(distance);
-<<<<<<< Updated upstream
-        document.getElementById("distance").innerHTML = distance + " km";
-        var duration = (new Helper().getUrlParameter('time'));
-        document.getElementById("minutes").innerHTML =  parseInt(duration).formatTime();
-        document.getElementById("price").innerHTML = "£" + (distance*10).toFixed(2);
-=======
         document.getElementById("distance").innerHTML = "Distance: " + distance + " km";
         var duration = parseInt(JSON.parse((new Helper ()).getItemFromLocalStorage('time')));
         document.getElementById("minutes").innerHTML = "Time: " + parseInt(duration).formatTime();
         document.getElementById("price").innerHTML = "Price: " + "£" + (distance*10).toFixed(2);
->>>>>>> Stashed changes
         
         
       }
