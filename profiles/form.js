@@ -4,7 +4,6 @@ function Form() {
     this.options = [];
     
     this.init = function() {
-        this.addOption("What is your dog's name?:" , "name", "text", "");
         this.addOption("My dogs size", "dogSize", "range", " min=\"0\" max=\"2\"");
         this.addOption("My dogs energy level", "dogEnergy", "range", " min=\"0\" max=\"2\"");
         this.addOption("My preferred rate (£ / km)", "cashRate", "number", "value=0");
