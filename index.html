@@ -20,16 +20,15 @@
         <header>
         </header>
         <main>
-            <div class="overlay" id="selection_overlay">
+            <div class="relative_container">
                 <!--When doing the settings-pages, feel free to add a classic href 
                         and remove the onclick in the fetchView.js -->
-                <a class="design_button select_role" id="owner_button" href="profiles/ownerProfile.html">I want my Dog to be walked</a>
-                <a class="design_button select_role" id="walker_button" href="profiles/walkerProfile.html">I want to walk a dog</a>
+                <a class="design_button select_role" id="owner_button" href="profiles/ownerProfile.html"><span>I want my Dog to be walked</span></a>
+                <a class="design_button select_role" id="walker_button" href="profiles/walkerProfile.html"><span>I want to walk a dog</span></a>
             </div>
         </main>
         <footer>
             <button onclick="window.location.reload(true);">reload and delete cache (dev mode)</button>
-            <a class="design_button" href="tests/mapTest.html">mapTest (dev mode)</a>
         </footer>
         <!-- I'm not even sure, we need this... I just added it out of habit  -->
         <script src="fetchModel.js"></script>

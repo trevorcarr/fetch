@@ -32,13 +32,18 @@
       
       function name(){
           if(window.location.pathname.split("/").slice(-1)[0] == 'postWalkOwner.html'){
-              document.getElementById("howWere").innerHTML = "How was " + "?";
+              document.getElementById("howWere").innerHTML = "How was " 
+                      + JSON.parse((new Helper ()).getItemFromLocalStorage('walker_name')) + "?";
           } else {
-              document.getElementById("howWere").innerHTML = "How were " + "" + "and " + "?";
+              document.getElementById("howWere").innerHTML = "How were " 
+                      + JSON.parse((new Helper ()).getItemFromLocalStorage('dog_name')) + " and " 
+                      + JSON.parse((new Helper ()).getItemFromLocalStorage('owner_name')) + "?";
           }
       }
       
       function calculateAverageReview(){
+          var average_rating = JSON.parse((new Helper ()).getItemFromLocalStorage('avg_rating'));
+          var number_of_ratings = JSON.parse((new Helper ()).getItemFromLocalStorage('ratings'));
           //get owner/ walker current rating 
           //multiply by the number of ratings
           //add the new rating 

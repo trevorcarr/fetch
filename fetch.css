@@ -25,6 +25,16 @@ html,body{
     height: 100%;
     width: 100%;
 }
+
+body {
+    background-image: url('images/background_0.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+    background-size: 100%;
+    background-color: transparent;
+}
+
 a {
     text-decoration: none;
 }
@@ -36,7 +46,7 @@ header {
 
 main {
     height: 90%;
-    background-color: skyblue;
+    background-color: rgba(128,176,224,0.7);
 }
 
 footer {
@@ -54,16 +64,14 @@ footer {
 
 .info_div {
     position: absolute;
-    opacity: 0.7;
     height: 5%;
-    background: black;
+    background: rgba(0,0,0,0.7);
     z-index: 4;
     border: 1px solid skyblue;
     border-radius: 10px;
     width: 80%;
     margin-left: 10%;
     padding: 0.5rem;
-    
 }
 
 #top_info {
@@ -78,17 +86,17 @@ footer {
 
 .walk_info {
     color: lightblue;
-    opacity: 1;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
 }
 
 
-#relative_container {
+.relative_container {
     position: relative;
     height: 100%;
     width: 100%;
 }
+
 .menu_button:active {
     color: skyblue;
 }
@@ -116,17 +124,33 @@ footer {
 }
 
 
-.select_role {
+.background {
+    background-color: rgba(128,176,224,0.7);
+}
+
+.select_role.design_button {
     display: block;
     height: 50%;
     font-size: xx-large;
+    text-align: center;
+    line-height: 25vh;
+    color: #fff;
+    text-shadow: -2px 2px #306090;
+    background-image: linear-gradient(top, #80b0e0, #306090);
+    /*ensure browser support, chrome needs it, so to make sure, we do moz etc. as well*/
+    background-image: -webkit-linear-gradient(top, rgba(128,176,224,0.6), rgba(48,96,144,0.6));
+    background-image: -moz-linear-gradient(top, rgba(128,176,224,0.6), rgba(48,96,144,0.6));
+    background-image: -o-linear-gradient(top, rgba(128,176,224,0.6), rgba(48,96,144,0.6));
+    background-image: -ms-linear-gradient(top, rgba(128,176,224,0.6), rgba(48,96,144,0.6));
+    box-shadow: inset 0 0 0 1px #305070;
+    border: none;
+    border-radius: 5px;
 }
 
 .design_button {
     text-align: center;
     color: #fff;
     text-shadow: -2px 2px #306090;
-    background-color: #ff9664;
     background-image: linear-gradient(top, #80b0e0, #306090);
     /*ensure browser support, chrome needs it, so to make sure, we do moz etc. as well*/
     background-image: -webkit-linear-gradient(top, #80b0e0, #306090);
@@ -137,6 +161,9 @@ footer {
     border: none;
     border-radius: 5px;
 }
+
+
+
 
 .design_button:active {
     box-shadow: inset 0 0 0 1px #305070,inset 0 5px 30px #204050;

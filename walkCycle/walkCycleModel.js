@@ -13,6 +13,9 @@ function WalkCycleModel() {
             map = new Map('map_div'),
             dog = null, //TODO: just a placeholder
             owner = null,
+            walker = {name: 'the walker',
+                      average_rating: 4.7,
+                      ratings: 520},
             setModeCallback = null,
             mode = "",
             max_target_distance = 50, //in metres
@@ -31,8 +34,11 @@ function WalkCycleModel() {
         var target_name = null;
         var target_position = null;
         dog = {name: "Fido",
-            owner_name: 'OWNERNAME!',
-            position: null};
+           //TODO!
+            owner_name: 'his owner!',
+            position: null,
+            average_rating: 4.1,
+            ratings:410};
         if (role === 'walker') {
             dog.position = pos;
             target_name = dog.name;
@@ -66,7 +72,7 @@ function WalkCycleModel() {
                 if (role === 'walker') {
                     map.setPositionUpdateCallback(function () {
                         if (map.getDistanceToTarget() <= max_target_distance) {
-                            window.alert('reached ' + dog.name + ' Hit start, as soon as you start walking!');
+                            window.alert('reached ' + dog.name +' Enjoy your walk!');
                             that.setMode('start_walk');
                         }
                         that.onPositionUpdate();
@@ -132,6 +138,13 @@ function WalkCycleModel() {
             window.alert(dog.name + ' is reunited with ' + dog.owner_name);
             (new Helper ()).setItemInLocalStorage("path", map.getPathJson());
             (new Helper ()).setItemInLocalStorage("time", JSON.stringify(that.getDuration()));
+            (new Helper ()).setItemInLocalStorage("owner_name", JSON.stringify(dog.owner_name));
+            (new Helper ()).setItemInLocalStorage("dog_name", JSON.stringify(dog.name));
+            (new Helper ()).setItemInLocalStorage("walker_name", JSON.stringify(walker.name));
+            
+            var user = (role === 'walker') ? walker : dog;
+            (new Helper ()).setItemInLocalStorage("avg_rating", JSON.stringify(user.average_rating));
+            (new Helper ()).setItemInLocalStorage("ratings", JSON.stringify(user.ratings));
             if (role === 'walker') {
                 window.open('../postWalk/postWalkWalker.html', '_self');
             } else if (role === 'owner') {
@@ -151,7 +164,6 @@ function WalkCycleModel() {
     };
 
     this.onMarkerClick = function (id) {
-        window.alert(id);
     };
     var setMode = function (test) {
         window.alert(test);
@@ -182,5 +194,5 @@ function WalkCycleModel() {
 
     this.setPositionUpdateCallback = function (cb_function) {
         positionUpdateCallback = cb_function;
-    }
+    };
 }
