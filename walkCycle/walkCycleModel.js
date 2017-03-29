@@ -33,7 +33,10 @@ function WalkCycleModel() {
         var target_position = null;
         dog = {name: "Fido",
             owner_name: owner.name,
-            position: null};
+            position: null,
+            average_rating: owner.getScore(),
+            ratings:owner.ratings.length};
+        
         if (role === 'walker') {
             dog.position = pos;
             target_name = dog.name;
@@ -67,7 +70,7 @@ function WalkCycleModel() {
                 if (role === 'walker') {
                     map.setPositionUpdateCallback(function () {
                         if (map.getDistanceToTarget() <= max_target_distance) {
-                            window.alert('reached ' + dog.name + ' Hit start, as soon as you start walking!');
+                            window.alert('reached ' + dog.name +' Enjoy your walk!');
                             that.setMode('start_walk');
                         }
                         that.onPositionUpdate();
@@ -133,6 +136,13 @@ function WalkCycleModel() {
             window.alert(dog.name + ' is reunited with ' + dog.owner_name);
             (new Helper ()).setItemInLocalStorage("path", map.getPathJson());
             (new Helper ()).setItemInLocalStorage("time", JSON.stringify(that.getDuration()));
+            (new Helper ()).setItemInLocalStorage("owner_name", JSON.stringify(dog.owner_name));
+            (new Helper ()).setItemInLocalStorage("dog_name", JSON.stringify(dog.name));
+            (new Helper ()).setItemInLocalStorage("walker_name", JSON.stringify(walker.name));
+            
+            var user = (role === 'walker') ? walker : dog;
+            (new Helper ()).setItemInLocalStorage("avg_rating", JSON.stringify(user.average_rating));
+            (new Helper ()).setItemInLocalStorage("ratings", JSON.stringify(user.ratings));
             if (role === 'walker') {
                 window.open('../postWalk/postWalkWalker.html', '_self');
             } else if (role === 'owner') {
@@ -152,7 +162,6 @@ function WalkCycleModel() {
     };
 
     this.onMarkerClick = function (id) {
-        window.alert(id);
     };
     var setMode = function (test) {
         window.alert(test);
@@ -183,5 +192,5 @@ function WalkCycleModel() {
 
     this.setPositionUpdateCallback = function (cb_function) {
         positionUpdateCallback = cb_function;
-    }
+    };
 }

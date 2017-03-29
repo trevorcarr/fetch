@@ -15,6 +15,7 @@ function MatchmakingModel() {
     };
     
     this.storeData = function() {
+        localStorage.setItem("owner", JSON.stringify(activeProfile));
         localStorage.setItem("walker", JSON.stringify(walker));
     };
     

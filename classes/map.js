@@ -9,7 +9,7 @@
 function Map(map_div_id, marker_cb) {
     this.googleMap = new google.maps.Map(document.getElementById(map_div_id), {
         center: {lat: -34.397, lng: 150.644},
-        zoom: 16,
+        zoom: 14,
         disableDefaultUI: true
     });
     this.marker_callback = (marker_cb)? marker_cb : null;
