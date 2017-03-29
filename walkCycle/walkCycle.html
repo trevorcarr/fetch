@@ -19,24 +19,26 @@
     </head>
     <body>
         <header>
+            &nbsp;FETCH!
         </header>
         
         <main>
-            <div class="info_div" id="top_info">
-                <a id="menu_button" class="menu_button hidden" href="#">&#9776;</a>
-                <div id="walk_headline_div"></div>
-            </div>
-            <div id="walkOverview" class="hidden">
-                <p id="distance"></p>
-                <p id="duration"></p>
-            </div>    
-            <div id="map_div" class="map"></div>
-            <div class="info_div" id="bottom_info">
-                <a class="design_button hidden" id="toggle_walk_button"></a>
+            <div id="relative_container">
+                <div class="info_div" id="top_info">
+                    <div id="walk_headline_div" class="walk_info"></div>
+                </div>
+                <div class="info_div hidden" id="walkOverview">
+                    <div id="distance" class="walk_info left"></div>
+                    <div id="duration" class="walk_info right"></div>
+                    <a class="design_button hidden" id="toggle_walk_button"></a>
+                </div>
+                <div id="map_div" class="map"></div>
             </div>
         </main>
         
         <footer>
+            &nbsp;&#169; whoLetTheDogsOut
+            <button onclick="window.location.reload(true);" style="margin-left: 2rem;">(devMode-reload)</button>
         </footer>
         <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo&libraries=geometry">
