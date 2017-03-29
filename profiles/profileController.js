@@ -17,6 +17,7 @@ var model = new ProfileModel(owner, walkers);
 model.init();
 var view = new ProfileView();
 var form = new Form();
+form.addOption("What is your dog's name?:" , "name", "text", "");
 form.init();
 var controller = null;
 
@@ -66,6 +67,7 @@ function ProfileController() {
        }
        activeProfile.addAttributes(attributes);
        model.init();
+       model.storeData();
        window.location.replace("../matchmaking/ownerMatchMaking.html");
     });
     

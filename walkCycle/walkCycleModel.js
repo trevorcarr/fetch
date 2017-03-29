@@ -12,6 +12,7 @@ function WalkCycleModel() {
     var role = (new Helper()).getUrlParameter('role'), //walker | owner
             map = new Map('map_div'),
             dog = null, //TODO: just a placeholder
+            owner = null,
             setModeCallback = null,
             mode = "",
             max_target_distance = 50, //in metres
@@ -30,6 +31,7 @@ function WalkCycleModel() {
         var target_name = null;
         var target_position = null;
         dog = {name: "Fido",
+            owner_name: 'OWNERNAME!',
             position: null};
         if (role === 'walker') {
             dog.position = pos;
@@ -37,7 +39,7 @@ function WalkCycleModel() {
             target_position = dog.position;
         } else if (role === 'owner') {
             map.showEnemy(pos);
-            target_name = 'OWNERS NAME';
+            target_name = dog.owner_name;
             target_position = my_pos;
         }
         map.addMarker(target_position, target_name, 1, true);
@@ -103,10 +105,7 @@ function WalkCycleModel() {
                         that.onPositionUpdate();
                         that.finishWalkIfAtTarget();
                     });
-                } else if (role === 'owner') {
-                    // TODO: Again, we need a on position of the other one - update...
                 }
-
                 break;
             default:
                 break;
@@ -116,7 +115,9 @@ function WalkCycleModel() {
     
     this.walkerPositionUpdate = function () {
         map.updatePath(role === 'owner');
-        console.log(map.getLengthOfPathInM());
+        if (positionUpdateCallback) {
+            positionUpdateCallback();
+        }
         if(!use_drive_to_walk_phase) {
             that.finishWalkIfAtTarget(role === 'owner');
             return;
@@ -126,8 +127,11 @@ function WalkCycleModel() {
     
     this.finishWalkIfAtTarget = function (of_enemy) {
         if (map.getDistanceToTarget(of_enemy) <= max_target_distance) {
-            window.open('../postWalk/postWalkWalker.html?path=' + encodeURIComponent(map.getPathJson()) 
-                    + '&time=' + encodeURIComponent(that.getDuration()), '_self');
+            var url_path = encodeURIComponent(map.getPathJson()),
+                url_duration = encodeURIComponent(that.getDuration());
+            window.alert(dog.name + ' is reunited with ' + dog.owner_name);
+            window.open('../postWalk/postWalkWalker.html?path=' + url_path 
+                    + '&time=' + url_duration, '_self');
         }
     };
 

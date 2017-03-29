@@ -49,30 +49,56 @@ footer {
 }
 
 #map_div {
-    height: 80%;
-/*    margin-bottom: 1%;
-    margin-top: 1%;*/
+    height: 100%;
 }
 
+.info_div {
+    position: absolute;
+    opacity: 0.7;
+    height: 5%;
+    background: black;
+    z-index: 4;
+    border: 1px solid skyblue;
+    border-radius: 10px;
+    width: 80%;
+    margin-left: 10%;
+    padding: 0.5rem;
+    
+}
+
+#top_info {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+#walkOverview {
+    bottom: 0;
+    margin-bottom: 0.6rem;
+}
+
+
+.walk_info {
+    color: lightblue;
+    opacity: 1;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+
+#relative_container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
 .menu_button:active {
     color: skyblue;
 }
 
-.menu_button {
-    display: block;
-    font-size: 2rem;
+.left {
+    float: left;
 }
 
-#walkOverview {
-    position: absolute;
-    background-color: skyblue;
-    width: auto;
-    height: auto;
-    z-index: 3;
-    margin: 1%;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    
+.right {
+    float: right;
 }
 
 #toggle_walk_button {
@@ -81,11 +107,6 @@ footer {
     height: 80%;
     margin-left: 10%;
     margin-top: 1%;
-}
-
-.info_div {
-    width: 100%;
-    height: 10%;
 }
 
 #show_user {
@@ -135,6 +156,7 @@ footer {
 .hidden * {
     display: none !important;
 }
+<<<<<<< HEAD
 
 .inputForms {
    
@@ -149,3 +171,5 @@ input[type=text], input[type=number] {
     text-align: center;
     vertical-align: central;
 }
+=======
+>>>>>>> origin/master

@@ -14,7 +14,9 @@ function ProfileModel(ownerProfile, walkerProfiles) {
     this.storeData = function() {
         localStorage.setItem("owner", JSON.stringify(ownerProfile));
         localStorage.setItem("walkers", JSON.stringify(walkerProfiles));
-        localStorage.setItem("scores", JSON.stringify(scoreMap));
+        localStorage.setItem("scores", JSON.stringify(this.scoreMap));
+        var allProfiles = [ownerProfile].concat(walkerProfiles);
+        localStorage.setItem("profiles", JSON.stringify(allProfiles));
     };
     
     this.sortProfiles = function(ownerProfile, walkerProfiles) {
@@ -56,33 +58,7 @@ function ProfileModel(ownerProfile, walkerProfiles) {
     };
 
     this.comparePref = function(pref, attr) {
-
-        if(pref.type === attr.type){
-            switch(pref.type) {
-                case "number":
-                    return 3 - (abs(pref.value - attr.value));
-                    break;
-                case "string":
-                    var p = pref.value.toLowerCase().trim();
-                    var a = attr.value.toLowerCase().trim();
-
-                    if(p ===  a) {
-                        return 3;
-                    } else {
-                        return 0;
-                    }
-                    break;
-                case "boolean":
-                    if(pref.value === attr.value) {
-                        return 1;
-                    } else {
-                        return -1;
-                    }
-                    break;
-            }
-        } else {
-            return 0;
-        }
+        return Math.floor((Math.random() * 10) + 1);
     };
 
     this.addWalker = function(walker) {
