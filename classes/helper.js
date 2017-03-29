@@ -55,3 +55,26 @@ Number.prototype.formatTime = function () {
     }
     return ret_string;
 };
+
+
+
+Helper.prototype.getItemFromLocalStorage = function (item) {
+    var value;
+    if (Storage === "undefined" || !localStorage.getItem(item)) {
+        console.log("no local storage!");
+        return '';
+    } else {
+        console.log("got " + item + " from local storage");
+        value = localStorage.getItem(item);
+    }
+    return value;
+};
+
+Helper.prototype.setItemInLocalStorage = function (item, val) {
+    if (Storage === "undefined") {
+        console.log("no local storage!");
+    } else {
+        console.log("saved " + item + " to local storage");
+        localStorage.setItem(item, val);
+    }
+};

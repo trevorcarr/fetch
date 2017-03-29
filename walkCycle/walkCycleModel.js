@@ -130,8 +130,13 @@ function WalkCycleModel() {
             var url_path = encodeURIComponent(map.getPathJson()),
                 url_duration = encodeURIComponent(that.getDuration());
             window.alert(dog.name + ' is reunited with ' + dog.owner_name);
-            window.open('../postWalk/postWalkWalker.html?path=' + url_path 
-                    + '&time=' + url_duration, '_self');
+            (new Helper ()).setItemInLocalStorage("path", map.getPathJson());
+            (new Helper ()).setItemInLocalStorage("time", JSON.stringify(that.getDuration()));
+            if (role === 'walker') {
+                window.open('../postWalk/postWalkWalker.html', '_self');
+            } else if (role === 'owner') {
+                window.open('../postWalk/postWalkOwner.html', '_self');
+            }
         }
     };
 

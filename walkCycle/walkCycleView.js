@@ -47,6 +47,7 @@ function WalkCycleView() {
                 } else if (role === 'owner') {
                     walk_headline_div.textContent = 'Waiting for ' + getDogCallback().name + ' to be picked up.';
                 }
+                topInfo_div.classList.remove('hidden');
                 
                 toggleWalkButton.classList.add('hidden');
                 break;
@@ -88,7 +89,7 @@ function WalkCycleView() {
                     if(use_drive_to_walk_phase) {
                         toggleWalkButton.classList.add('hidden');
                     }
-                } else if (role == 'owner') {
+                } else if (role === 'owner') {
                     walk_headline_div.textContent = getDogCallback().name + ' is returning';
                 }
                 clearInterval(update_time_interval);
