@@ -28,11 +28,10 @@ html,body{
 }
 
 body {
-    background-image: url('images/background_1.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center; 
-    background-size: 100%;
+    background: url('images/background_1.png');
+    background-size: 5rem 5rem;
+    background-repeat: repeat;
+    background-attachment: fixed; 
     background-color: transparent;
 }
 

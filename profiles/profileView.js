@@ -37,8 +37,8 @@ function ProfileView() {
         
         type = input.type;
 
-        str = "<div id =\"" + input.name + "Input\">" + input.str
-            + "<input type =\"" + type + "\" name=\"" + input.name + "\""
+        str = "<div class=\"formInput\" id =\"" + input.name + "Input\">" + input.str
+            + "<br><input type =\"" + type + "\" name=\"" + input.name + "\""
             +  input.raw + ">" 
             + "</div>";
     

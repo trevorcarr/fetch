@@ -1,19 +1,30 @@
 
-function Profile(name, id) {
+function Profile(name, id, obj) {
     
-    this.name = name;
-    this.id = id;
-    this.ratings = [];
-    this.attributes = [];
-    this.prefs = [];
-    this.longitude = null;
-    this.latitude = null;
-    
-    var ratingsNum = Math.floor((Math.random() * 10) + 1);
-    
-    for(i = 0; i < ratingsNum; i++) {
-        this.ratings.push(Math.floor((Math.random() * 5)));
+    if(obj === null) {
+        this.name = name;
+        this.id = id;
+        this.ratings = [];
+        this.attributes = [];
+        this.prefs = [];
+        this.longitude = null;
+        this.latitude = null;
+
+        var ratingsNum = Math.floor((Math.random() * 10) + 1);
+
+        for(i = 0; i < ratingsNum; i++) {
+            this.ratings.push(Math.floor((Math.random() * 5)));
+        }
+    } else {
+        this.name = obj.name;
+        this.id = obj.id;
+        this.ratings = obj.ratings;
+        this.attributes = obj.attributes;
+        this.prefs = obj.prefs;
+        this.longitude = obj.longitude;
+        this.latitude = obj.latitude;
     }
+    
     
     this.getPrefs = function() {
         return this.prefs;
@@ -66,10 +77,10 @@ function Profile(name, id) {
         var score = 0;
 
         for(i = 0; i < this.ratings.length; i++) {
-            score += ratings[i];
+            score += this.ratings[i];
         }
 
-        if(ratings.length > 0) {
+        if(this.ratings.length > 0) {
             return score / this.ratings.length;
         } else {
             return -1;

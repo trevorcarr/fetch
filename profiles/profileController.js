@@ -6,10 +6,10 @@
 /* global google */
 
 /* DUMMY DATA */
-    var owner = new Profile("Joe Bloggs", 0);
-    var walker1 = new Profile("JC Denton", 1);
-    var walker2 = new Profile("Bert Sampson", 2);
-    var walker2 = new Profile("Jane Doe", 3);
+    var owner = new Profile("Joe Bloggs", 0, null);
+    var walker1 = new Profile("JC Denton", 1, null);
+    var walker2 = new Profile("Bert Sampson", 2, null);
+    var walker2 = new Profile("Jane Doe", 3, null);
     walker1.setLocation(55.8, -4.2);
     walker2.setLocation(57, -4.5);
     var walkers = [walker1, walker2];

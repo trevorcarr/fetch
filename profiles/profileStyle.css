@@ -8,8 +8,22 @@ and open the template in the editor.
     Author     : Stuart Gilmour
 */
 
+main {
+    position: relative;
+    width: 90vw;
+    height: 100%;
+    left: 5vw;
+    background-color: rgba(0,0,100,0.8);
+}
+
+.formInput {
+    padding: 0.2rem;
+    text-align:center;
+}
+
 .inputForms {
    width: 80vw;
+   padding: 1rem;
    margin-left: auto;
    margin-right: auto;
    line-height: 1.5rem;
@@ -27,4 +41,14 @@ and open the template in the editor.
 input[type=text], input[type=number] {
         border: 1px solid black;
         width: 80vw;
+        text-align: center;
+}
+
+button {
+    background-color: rgba(0, 100, 0, 0.7);
+    padding: 0.3rem;
+    text-align: center;
+    width: 90vw;
+    color: white;
+    border-radius: 0.5rem;
 }

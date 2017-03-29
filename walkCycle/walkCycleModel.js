@@ -5,6 +5,7 @@
 /*jslint node: true, browser: true */
 /*global google*/
 /*global Helper*/
+/*global Profile*/
 "use strict";
 
 
@@ -12,8 +13,8 @@ function WalkCycleModel() {
     var role = (new Helper()).getUrlParameter('role'), //walker | owner
             map = new Map('map_div'),
             dog = null, //TODO: just a placeholder
-            owner = JSON.parse(localStorage.getItem("owner")),
-            walker = JSON.parse(localStorage.getItem("walker")),
+            owner = new Profile(null, null, JSON.parse(localStorage.getItem("owner"))),
+            walker = new Profile(null, null, JSON.parse(localStorage.getItem("walker"))),
             setModeCallback = null,
             mode = "",
             max_target_distance = 50, //in metres

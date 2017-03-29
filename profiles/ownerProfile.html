@@ -21,51 +21,47 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="profileStyle.css"/>
     </head>
     <body>
-        <header></header>
         <main>
             
-            <div>
-                 <div class="inputForms">
-                     
-                     <h3>Please describe your dog.</h3>
+            <div class="inputForms">
 
-                            <form id="dogAttr" action="">
-                                    What is your dog's name?: <br>
-                                    <input type="text" name="dogName"> <br>
+                <h3>Please describe your dog</h3>
 
-                                    Please add a photo of your dog: <br>
-                                    <input type="file" name="dogPhoto" accept="image/*"><br>
-                                    <!-- Should this maybe be a dropdown box already containing dog breeds?-->
-                                    What kind of dog do you have?: <br>
-                                    <input type="text" name="dogBreed"> <br> 
-                                    <!-- Size slider, not really sure what the min/max values should be-->
-                                    How big is your dog?:<br>
-                                    Small <input type="range" name="dogSize" min="0" max="2"> Big <br>
+                       <form id="dogAttr" action="">
+                               What is your dog's name?: <br>
+                               <input type="text" name="dogName"> <br>
 
-                                    How active is your dog?:<br>
-                                    Docile <input type="range" name="dogSize" min="0" max="2"> Energetic <br>
+                               Please add a photo of your dog: <br>
+                               <input type="file" name="dogPhoto" accept="image/*"><br>
+                               <!-- Should this maybe be a dropdown box already containing dog breeds?-->
+                               What kind of dog do you have?: <br>
+                               <input type="text" name="dogBreed"> <br> 
+                               <!-- Size slider, not really sure what the min/max values should be-->
+                               How big is your dog?:<br>
+                               Small <input type="range" name="dogSize" min="0" max="2"> Big <br>
 
-                                    How much are you willing to pay?:<br>
-                                    £<input type="number" name="payRate"> <br>
+                               How active is your dog?:<br>
+                               Docile <input type="range" name="dogSize" min="0" max="2"> Energetic <br>
 
-                                    How far does your dog like to be walked?:<br>
-                                    Distance: <input type="number" name="distance"> Km <br>
+                               How much are you willing to pay?:<br>
+                               £<input type="number" name="payRate"> <br>
 
-                                    Properties?:<br>
-                                    <input type="checkbox" name="ballOption" value="Ball"> My dog likes to play with a ball.<br>
-                                    <input type="checkbox" name="dogOption" value="Dogs"> My dog interacts well with other dogs.<br>
-                                    <input type="checkbox" name="childOption" value="Children"> My dog interacts well with children<br>
-                                    <input type="checkbox" name="leadOption" value="Lead"> My dog requires a lead<br>
+                               How far does your dog like to be walked?:<br>
+                               Distance: <input type="number" name="distance"> Km <br>
 
-                </form>
-                <button id="submit">Accept</button>
+                               Properties?:<br>
+                               <input type="checkbox" name="ballOption" value="Ball"> My dog likes to play with a ball.<br>
+                               <input type="checkbox" name="dogOption" value="Dogs"> My dog interacts well with other dogs.<br>
+                               <input type="checkbox" name="childOption" value="Children"> My dog interacts well with children<br>
+                               <input type="checkbox" name="leadOption" value="Lead"> My dog requires a lead<br>
 
-                </div>
-            </div>
+           </form>
+
+           </div>
+
+           <button id="submit">Accept</button>
 
         </main>
-        
-        <footer></footer>
         
         <script src="profileModel.js"></script>
         <script src="profileView.js"></script>
