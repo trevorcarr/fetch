@@ -41,6 +41,7 @@ function ProfileController() {
            switch(result.type) {
                case "text":
                     if(result.value.length <= 0) {
+                        alert("Please enter your dog's name.");
                         return;
                     } else if (result.value.length > 20) {
                         return;

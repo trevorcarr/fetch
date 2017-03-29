@@ -13,11 +13,15 @@ and open the template in the editor.
    margin-left: auto;
    margin-right: auto;
    line-height: 1.5rem;
+   color: white;
+   font-family: sans-serif;
 }
 
 .inputForms h3{
     margin-bottom: 1rem;
     text-align: center;
+    font-family: "Open Sans", sans-serif;
+    color: white;
 }
 
 input[type=text], input[type=number] {
