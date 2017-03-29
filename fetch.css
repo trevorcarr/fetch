@@ -156,20 +156,3 @@ footer {
 .hidden * {
     display: none !important;
 }
-
-.inputForms {
-   width: 80vw;
-   margin-left: auto;
-   margin-right: auto;
-   line-height: 1.5rem;
-}
-
-.inputForms h3{
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-input[type=text], input[type=number] {
-        border: 1px solid black;
-        width: 80vw;
-}
