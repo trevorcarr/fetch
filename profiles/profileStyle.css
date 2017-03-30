@@ -71,8 +71,8 @@ input[type=number]{
 }
 
 input[type=checkbox]{
-    width: 5vw ;
-    height:5vh ;
+    width: 4vw ;
+    height:4vh ;
 }
 
 button {

@@ -17,6 +17,9 @@ function WalkerProfile() {
             localStorage.setItem("owners", JSON.stringify(owners));
             window.location.replace("../matchmaking/walkerMatchMaking.html");
         }
+        else{
+            alert("Please enter your name.");
+        }
     });
 }
 
