@@ -83,7 +83,7 @@ function Profile(name, id, obj) {
         if(this.ratings.length > 0) {
             return score / this.ratings.length;
         } else {
-            return -1;
+            return 0;
         }
     };
 }

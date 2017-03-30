@@ -27,6 +27,9 @@ and open the template in the editor.
         <div>
             <form class="inputForms">
                 
+                What is your name?<br>
+                <input type="text" name="walkerName" id="walkerName"></input>
+                
                 <h3>Describe the kind of dog you would like to walk.</h3>
 
              	Which of these sounds most like you?:<br>
@@ -35,10 +38,10 @@ and open the template in the editor.
   		<input type="radio" name="prefSize" value="big"> I prefer to walk large dogs.<br>
                 
                 How energetic are you?(will used to pair you with dogs of similar energy levels)<br>
-                Docile <input type="range" name="dogSize" min="0" max="2"> Energetic <br>
+                Docile <input type="range" name="dogSize" min="0" max="2" value="1"> Energetic <br>
 
-  		Rate: £<input type="number" name="payRate"> <br>
-  		Distance: <input type="number" name="distance"> Km <br>
+  		Rate: £<input type="number" name="payRate" value="0"> <br>
+  		Distance: <input type="number" name="distance" value="0"> Km <br>
                 
                 Please select any of these which apply to you:<br>
 		<input type="checkbox" name="ballOption" value="Ball"> I don't mind playing with the dog(throwing a ball).<br>
@@ -46,14 +49,12 @@ and open the template in the editor.
   		<input type="checkbox" name="childOption" value="Children"> I have children<br>
                 <input type="checkbox" name="leadOption" value="Lead"> I don't mind using a lead<br>
 
-  		<button id="submit">Accept</button>
-
-
              </form>
+            <button id="submit">Accept</button>
         </div>
-        <a class="design_button" href="../walkCycle/walkCycle.html?role=walker">Finally, get To the walkcycle</a>
         </main>
-        <footer></footer>
         
+        <script src="profile.js"></script>
+        <script src="walkerProfile.js"></script>
     </body>
 </html>
