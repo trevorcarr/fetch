@@ -18,7 +18,7 @@ main {
 
 .formInput {
     padding: 0.2rem;
-    text-align:center;
+    /*text-align:center;*/
 }
 
 .inputForms {
@@ -42,6 +42,11 @@ input[type=text], input[type=number] {
         border: 1px solid black;
         width: 80vw;
         text-align: center;
+}
+
+input[type=checkbox]{
+    width: 5vw ;
+    height:5vh ;
 }
 
 button {
