@@ -35,8 +35,7 @@ function WalkCycleModel() {
         dog = {name: "Fido",
             owner_name: owner.name,
             position: null,
-//            average_rating: owner.getScore(),
-            average_rating: 4,
+            average_rating: owner.getScore(),
             ratings:owner.ratings.length};
         
         if (role === 'walker') {

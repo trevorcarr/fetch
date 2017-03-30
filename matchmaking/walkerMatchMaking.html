@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Fetch!</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link rel="icon" sizes="192x192" href="../images/bone.png"/>
+        <link rel="apple-touch-icon" href="../images/bone.png"/>
+        <link rel="shortcut icon" href="../images/bone.png" type="image/x-icon"/>
+        
+        <link rel="stylesheet" type="text/css" href="../normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="../fetch.css"/>
+        <link rel="stylesheet" type="text/css" href="matchmaking.css"/>
+    </head>
+    <body>
+        <header>FETCH!</header>
+        <main>
+                <div id="map_div" class="map"></div>
+                
+                <div id="userDisplay" class="floatOver">
+                    <div id="userName"></div>
+                    <div id="userPhoto"></div>
+                </div>
+                <button id="closeUser" class="floatOver">X</button>
+                <button id="confirmUser" class="floatOver">CONFIRM</button>
+        </main>
+
+        
+        
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo&libraries=geometry">
+        </script>
+        <script src="../classes/map.js"></script>
+        <script src="../classes/helper.js"></script>
+        <script src="matchmakingView.js"></script>
+        <script src="walkerMatchmakingModel.js"></script>
+        <script src="walkerMatchmaking.js"></script>
+    </body>
+</html>
