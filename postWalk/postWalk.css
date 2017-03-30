@@ -7,10 +7,13 @@ and open the template in the editor.
     Created on : Mar 27, 2017, 12:41:14 PM
     Author     : Trevor
 */
+
 .rating {
     clear: both;
     outline-color: black;
     border-color: black;
+    color:white;
+    font-weight:bold;
     padding: 10%;
 
     /*background-color: white;*/
@@ -70,6 +73,7 @@ h1{
     text-align: center;
     margin-top: 5%;
     margin-bottom: 3%;
+    color:white;
     
 }
 
@@ -79,7 +83,6 @@ ul{
 }
 .li {
     display: inline-block;
-
 }
 
 h2{
@@ -103,6 +106,7 @@ h2{
     width: 50%;
     margin: 0 auto;
     margin-bottom: 7%;
+    color:white;
 }
 
 th {

@@ -26,7 +26,6 @@ main {
 .inputForms {
    width: 80vw;
    padding: 1rem;
-   text-align: center;
    margin-left: auto;
    margin-right: auto;
    line-height: 1.5rem;
@@ -41,10 +40,34 @@ main {
     color: white;
 }
 
-input[type=text], input[type=number] {
+.inputForms h4{
+    display: inline;
+}
+
+#radioOptions{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+#sliders{
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0.5rem;
+}
+
+#numberInputs{
+    padding-bottom: 0.5rem;
+}
+
+input[type=text]{
         border: 1px solid black;
         width: 80vw;
-        text-align: center;
+}
+
+input[type=number]{
+    border: 1px solid black;
+    width: 50vw;
 }
 
 input[type=checkbox]{

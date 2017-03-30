@@ -15,7 +15,7 @@ function WalkerProfile() {
             var walker = new Profile(walkerName.value, 0, null);
             localStorage.setItem("walker", JSON.stringify(walker));
             localStorage.setItem("owners", JSON.stringify(owners));
-            window.location.replace("../matchmaking/walkerMatchmaking.html");
+            window.location.replace("../matchmaking/walkerMatchMaking.html");
         }
     });
 }

@@ -21,38 +21,46 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="profileStyle.css"/>
     </head>
     <body>
-        <header></header>
+        <header>FETCH!</header>
         <main>
       
         <div>
             <form class="inputForms">
                 
-                What is your name?<br>
-                <input type="text" name="walkerName" id="walkerName"></input>
+                <h4>What is your name?:</h4><br>
+                <input type="text" name="walkerName" id="walkerName">
                 
-                <h3>Describe the kind of dog you would like to walk.</h3>
-
-             	Which of these sounds most like you?:<br>
-             	<input type="radio" name="prefSize" value="small"> I prefer to walk small dogs.<br>
-  		<input type="radio" name="prefSize" value="medium"> I prefer to walk medium sized dogs.<br>
-  		<input type="radio" name="prefSize" value="big"> I prefer to walk large dogs.<br>
+                <div id="radioOptions">
+                    <h4>Which of these sounds most like you?:</h4><br>
+                    <input type="radio" name="prefSize" value="small"> I prefer to walk small dogs.<br>
+                    <input type="radio" name="prefSize" value="medium"> I prefer to walk medium sized dogs.<br>
+                    <input type="radio" name="prefSize" value="big"> I prefer to walk large dogs.<br>
+                </div>
                 
-                How energetic are you?(will used to pair you with dogs of similar energy levels)<br>
-                Docile <input type="range" name="dogSize" min="0" max="2" value="1"> Energetic <br>
-
-  		Rate: £<input type="number" name="payRate" value="0"> <br>
-  		Distance: <input type="number" name="distance" value="0"> Km <br>
+                <h4>How energetic are you?</h4>(will used to pair you with dogs of similar energy levels)<br>
                 
-                Please select any of these which apply to you:<br>
-		<input type="checkbox" name="ballOption" value="Ball"> I don't mind playing with the dog(throwing a ball).<br>
-  		<input type="checkbox" name="dogOption" value="Dogs"> I will be walking other dogs.<br>
-  		<input type="checkbox" name="childOption" value="Children"> I have children<br>
-                <input type="checkbox" name="leadOption" value="Lead"> I don't mind using a lead<br>
-
+                <div id="sliders">
+                    <label>Docile</label> <input type="range" name="dogSize" min="0" max="2" value="1"> <label>Energetic</label> <br>
+                </div>
+                
+                <div id="numberInputs">
+                    Rate: £<input type="number" name="payRate" value="0"> <br>
+                    Distance: <input type="number" name="distance" value="0"> Km <br>
+                </div>
+                
+                <div id="checkOptions">    
+                    <h4>Please select any of these which apply to you:</h4><br>
+                    <input type="checkbox" name="ballOption" value="Ball"> I don't mind playing with the dog(throwing a ball).<br>
+                    <input type="checkbox" name="dogOption" value="Dogs"> I will be walking other dogs.<br>
+                    <input type="checkbox" name="childOption" value="Children"> I have children<br>
+                    <input type="checkbox" name="leadOption" value="Lead"> I don't mind using a lead<br>
+                </div>
              </form>
             <button id="submit">Accept</button>
         </div>
         </main>
+        
+        <footer>&nbsp;&#169; whoLetTheDogsOut</footer>
         
         <script src="profile.js"></script>
         <script src="walkerProfile.js"></script>

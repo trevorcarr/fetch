@@ -44,6 +44,8 @@ header {
     background-color: lightblue;
     text-align: center;
     color: white;
+    font-weight: bold;
+    font-size: 150%;
     padding: 0.3rem;
 }
 
@@ -187,16 +189,3 @@ footer {
     display: none !important;
 }
 
-.inputForms {
-   
-}
-
-input[type=text], input[type=number] {
-        border: 1px solid black;
-        width: 70vw;
-}
-
-#owner_button {
-    text-align: center;
-    vertical-align: central;
-}
