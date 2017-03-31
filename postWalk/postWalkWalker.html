@@ -43,18 +43,18 @@ and open the template in the editor.
             
             <h2 id="howWere"></h2>    
             
-            <div id="ratingBox"> 
+            <div id="ratingBox" > 
                 <fieldset class="rating"> 
                     <legend>   Leave Rating Here:   </legend>
-                        <input type="radio" id="5" name="rating" value="5"><label class ="full" for="5" title="Amazing job - 5 stars"></label>
-                        <input type="radio" id="4" name="rating" value="4"><label class ="full" for="4" title="Great job - 4 stars"></label>
-                        <input type="radio" id="3" name="rating" value="3"><label class ="full" for="3" title="job - 3 stars"></label>
-                        <input type="radio" id="2" name="rating" value="2"><label class ="full" for="2" title="Meh job - 2 stars"></label>
-                        <input type="radio" id="1" name="rating" value="1"><label class ="full" for="1" title="Bad job - 1 star"></label>
+                    <input type="radio" id="1" name="rating" value="1"><label class ="full" for="1" title="Bad job - 1 stars" onclick="rate(1)"></label>
+                    <input type="radio" id="2" name="rating" value="2"><label class ="full" for="2" title="Meh job - 2 stars" onclick="rate(2)"></label>
+                    <input type="radio" id="3" name="rating" value="3"><label class ="full" for="3" title="job - 3 stars" onclick="rate(3)"></label>
+                    <input type="radio" id="4" name="rating" value="4"><label class ="full" for="4" title="Great job - 4 stars" onclick="rate(4)"></label>
+                    <input type="radio" id="5" name="rating" value="5"><label class ="full" for="5" title="Awesome job - 5 stars" onclick="rate(5)"></label>
                 </fieldset>
             </div>
             <div id="submitButton">
-                <button type="submit" form="form1" value="Submit">Submit</button>
+                <button type="submit" form="form1" value="Submit" onclick="submit()">Submit</button>
             </div>
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr3JbeHNvMTbYILRsJtweypFA34e2D7xo&libraries=geometry"></script>
             <script src="postWalk.js"></script>

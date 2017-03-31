@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+var newRating;
 
       function init() {
         var map = new Map('post_map');
@@ -43,11 +44,22 @@
       
       function calculateAverageReview(){
           var average_rating = JSON.parse((new Helper ()).getItemFromLocalStorage('avg_rating'));
+          console.log(average_rating);
           var number_of_ratings = JSON.parse((new Helper ()).getItemFromLocalStorage('ratings'));
-          //get owner/ walker current rating 
-          //multiply by the number of ratings
-          //add the new rating 
-          //divide by number of ratings plus one
-          //return rating
+          var total = average_rating * number_of_ratings;
+          total += newRating;
+          number_of_ratings++;
+          average_rating = total/number_of_ratings;
+          localStorage.setItem('avg_rating', average_rating);
+          localStorage.setItem('ratings', number_of_ratings);
+      }
+      
+      function rate(rating){
+          newRating = rating;
+      }
+      
+      function submit(){
+          calculateAverageReview();
+          
       }
       window.addEventListener("load", init);
